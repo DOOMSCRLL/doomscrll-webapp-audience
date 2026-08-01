@@ -1,0 +1,64 @@
+<script lang="ts">
+	import { tick } from "svelte"
+	import type { SvelteSet } from "svelte/reactivity"
+
+	import { LocaleContext } from "contexts/shared.svelte"
+	import type Category from "models/category"
+	import getFeaturesFor from "repos/feature-repo"
+	import { getDictionaryOf } from "repos/locale-repo"
+
+	import DDropdown from "./d-dropdown/d-dropdown.svelte"
+	import DataChipContainer from "./data-chips/data-chip-container.svelte"
+	import FeatureChip from "./data-chips/feature-chip.svelte"
+
+	type Props = {
+		category: Category
+		selectedFeatures: SvelteSet<string>
+		maxFeatCount?: number
+	}
+
+	const { category, selectedFeatures, maxFeatCount }: Props = $props()
+
+	const dict = $derived(getDictionaryOf(LocaleContext.context.value!).doomlits.projectForm.features)
+	let isDisabled = $derived(selectedFeatures.size >= (maxFeatCount ?? 1e4))
+
+	let sectionRef = $state<HTMLElement>()
+
+	const featList = $derived(getFeaturesFor(category))
+	const feats = $derived.by<string[]>(() => {
+		if (selectedFeatures.size <= 0) return featList
+		else return featList.filter((f) => !selectedFeatures.has(f))
+	})
+	function handleFeatSelect(value: string) {
+		selectedFeatures.add(value)
+		tick().then(() => {
+			sectionRef?.scrollIntoView({ behavior: "smooth", block: "end" })
+		})
+	}
+	function handleFeatRemove(value: string) {
+		selectedFeatures.delete(value)
+	}
+</script>
+
+<section class="flex w-full flex-col items-start gap-4" bind:this={sectionRef}>
+	<DDropdown
+		name="project-feature"
+		label={dict.label.text}
+		placeholder={dict.label.placeholder}
+		tooltip={dict.tooltip}
+		emptyQueryLabel={dict.dropdown.labelEmptyQuery}
+		layout="row"
+		{isDisabled}
+		onChange={handleFeatSelect}
+		options={[
+			{
+				label: dict.dropdown.labelFeatGroup,
+				opts: feats.map((t) => ({ value: t, label: t })),
+			},
+		]} />
+	<DataChipContainer layout="row-wrap">
+		{#each selectedFeatures as feature (feature)}
+			<FeatureChip {feature} onRemove={handleFeatRemove} />
+		{/each}
+	</DataChipContainer>
+</section>

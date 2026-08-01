@@ -1,0 +1,83 @@
+@utility complementary {
+	pointer-events: none;
+
+	display: inline-flex;
+	align-items: center;
+
+	width: auto;
+	height: auto;
+}
+
+@utility not-allowed {
+	@apply cursor-not-allowed opacity-20 grayscale-20 select-none;
+}
+
+@utility super-markers {
+	list-style: none;
+	counter-reset: sup;
+	& li {
+		counter-increment: sup;
+	}
+	& li::before {
+		content: counter(sup);
+		font-size: 1rem;
+		vertical-align: super;
+	}
+}
+
+@utility pretty-scrollbar {
+	scrollbar-width: thin;
+	scrollbar-color: var(--color-inverse) transparent;
+}
+
+@utility pseudo-border {
+	position: relative;
+	z-index: 4;
+
+	&::before {
+		content: "";
+		position: absolute;
+		z-index: 8;
+
+		inset: 0;
+
+		border-radius: inherit;
+		border: 3px solid var(--color-inverse);
+
+		pointer-events: none;
+	}
+}
+
+@theme {
+	--arrow-inset-left: auto calc(100% - 1px) 50% auto;
+	--arrow-inset-right: auto auto 50% calc(100% - 1px);
+	--arrow-inset-top: auto auto 100% 50%;
+	--arrow-inset-bottom: calc(100% - 1px) auto auto 50%;
+
+	--arrow-transform-left: translate(51.65%, 50%) rotate(-45deg);
+	--arrow-transform-right: translate(-51.65%, 50%) rotate(135deg);
+	--arrow-transform-top: translate(-50%, 51.65%) rotate(45deg);
+	--arrow-transform-bottom: translate(-50%, -51.65%) rotate(-135deg);
+}
+@utility arrow-decor-* {
+	&::before {
+		content: "";
+
+		position: absolute;
+		pointer-events: none;
+
+		box-sizing: border-box;
+		width: 1.5rem;
+		height: 1.5rem;
+
+		background-color: inherit;
+		border-color: inherit;
+		border-width: inherit;
+		border-style: inherit;
+
+		clip-path: polygon(0 0, 100% 0, 0 100%);
+
+		inset: --value(--arrow-inset-*);
+		transform: --value(--arrow-transform-*);
+	}
+}
