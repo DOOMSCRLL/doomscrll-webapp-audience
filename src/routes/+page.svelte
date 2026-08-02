@@ -1,10 +1,9 @@
 <script lang="ts">
-	//import type { PageData } from "./$types"
+	import type { PageData } from "./$types"
 
 	import { LOCALE_DEFAULT } from "const/locales"
 	import { DateFmtContext, LocaleContext } from "contexts/shared.svelte"
 	import { getDictionaryOf } from "repos/locale-repo"
-	import { getProjectCountsFor } from "repos/project-repo"
 	import DDate from "utils/d-date"
 	import StylisticTimeFormat from "utils/stylistic-time-fmt"
 
@@ -12,12 +11,12 @@
 	import DoomscrllLogo from "comps/icons/doomscrll-logo.svelte"
 	import DoomscrllWordmark from "comps/icons/doomscrll-wordmark.svelte"
 	import Icon from "comps/icons/icon.svelte"
-	/*
+
 	type Props = {
 		data: PageData
 	}
 
-	const { data }: Props = $props()*/
+	const { data }: Props = $props()
 
 	const locale = $derived(LocaleContext.context.value!)
 	const dict = $derived(getDictionaryOf(locale).landing)
@@ -26,7 +25,6 @@
 	)
 
 	const today = DDate.today()
-	const testData = getProjectCountsFor(today)
 
 	// TODO: Add a hamburger menu somewhere.
 </script>
@@ -42,16 +40,20 @@
 		<p class="font-mono text-xl tracking-wider uppercase">{fmt.getFullDate(today)}</p>
 		<p class="font-mono font-bold tracking-widest uppercase">{fmt.getLongDayName(today)}</p>
 	</section>
-	<p class="mx-6 font-serif text-2xl font-medium tracking-wide text-inverse">{dict.copy}</p>
-	<ul class="flex w-full list-disc flex-col gap-2 pl-10">
-		{#each testData as data (data.category)}
-			<li>
-				<SlabAnchor href="/explore?category={data.category}" variant="text" fit="min" hasUnderline={true}>
-					{data.category} ({data.count})
-					<Icon icon="ArrowForward" size="small" />
-				</SlabAnchor>
-			</li>
-		{/each}
-	</ul>
+	{#if data.projectCounts.length > 0}
+		<p class="mx-6 font-serif text-2xl font-medium tracking-wide text-inverse">{dict.copy}</p>
+		<ul class="flex w-full list-disc flex-col gap-2 pl-10">
+			{#each data.projectCounts as item (item.category)}
+				<li>
+					<SlabAnchor href="/feed?category={item.category}" variant="text" fit="min" hasUnderline={true}>
+						{item.category} ({item.count})
+						<Icon icon="ArrowForward" size="small" />
+					</SlabAnchor>
+				</li>
+			{/each}
+		</ul>
+	{:else}
+		<p class="mx-6 font-serif text-2xl font-medium tracking-wide text-inverse">{dict.noProjectCopy}</p>
+	{/if}
 	<div class="flex w-full justify-center" aria-hidden="true"><DoomscrllLogo size="large" /></div>
 </main>
