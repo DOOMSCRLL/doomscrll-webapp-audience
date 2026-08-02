@@ -8,6 +8,7 @@
 	import StylisticTimeFormat from "utils/stylistic-time-fmt"
 
 	import SlabAnchor from "comps/buttons/slab-anchor.svelte"
+	import SlabButton from "comps/buttons/slab-button.svelte"
 	import DoomscrllLogo from "comps/icons/doomscrll-logo.svelte"
 	import DoomscrllWordmark from "comps/icons/doomscrll-wordmark.svelte"
 	import Icon from "comps/icons/icon.svelte"
@@ -25,8 +26,6 @@
 	)
 
 	const today = DDate.today()
-
-	// TODO: Add a hamburger menu somewhere.
 </script>
 
 <svelte:head>
@@ -55,5 +54,10 @@
 	{:else}
 		<p class="mx-6 font-serif text-2xl font-medium tracking-wide text-inverse">{dict.noProjectCopy}</p>
 	{/if}
-	<div class="flex w-full justify-center" aria-hidden="true"><DoomscrllLogo size="large" /></div>
+	<div
+		class="grid w-full grid-cols-[1fr_auto_1fr] items-center justify-items-end px-6 [&>svg]:col-2"
+		aria-hidden="true">
+		<DoomscrllLogo size="large" />
+		<SlabButton variant="text" fit="square"><Icon icon="Settings" /></SlabButton>
+	</div>
 </main>
