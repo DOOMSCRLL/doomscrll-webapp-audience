@@ -27,5 +27,4 @@ declare global {
 	}
 }
 
-export { }
-
+export {}
