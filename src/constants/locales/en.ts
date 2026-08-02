@@ -1,4 +1,4 @@
-import ctsr from "utils/condense-string"
+import ctsr, { MARKER_NEWLINE } from "utils/condense-string"
 
 export default {
 	common: {
@@ -28,6 +28,7 @@ export default {
 				"This is the DOOMSCRLL's audience app. You can explore today's selection of independent projects from here.",
 		},
 		copy: "What are you looking for today?",
+		noProjectCopy: ctsr`It seems that no projects were published for today!${MARKER_NEWLINE}Please check again tomorrow~`,
 	},
 	errorPage: {
 		header: "Hey, you found an error!",

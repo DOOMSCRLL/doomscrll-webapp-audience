@@ -1,5 +1,5 @@
 import type { Dictionary } from "models/internal/locale"
-import ctsr from "utils/condense-string"
+import ctsr, { MARKER_NEWLINE } from "utils/condense-string"
 
 export default {
 	common: {
@@ -27,7 +27,8 @@ export default {
 			title: "DOOMSCRLL Uygulaması",
 			description: "Bu DOOMSCRLL uygulaması. Buradan bugünün projelerini keşfedebilirsin.",
 		},
-		copy: "What are you looking for today?",
+		copy: "Bugün neyi keşfedelim?",
+		noProjectCopy: ctsr`Görünüşe göre bugün hiçbir proje sunulmamış!${MARKER_NEWLINE}Lütfen yarın tekrar dene~`,
 	},
 	errorPage: {
 		header: "Aha, bir hata yakaladın!",
