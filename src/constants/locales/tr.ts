@@ -22,6 +22,13 @@ export default {
 		},
 		labelTooltip: "Fareni bu düğmenin üzerine getirerek bağlı araç ipuçlarını görebilirsin.",
 	},
+	landing: {
+		meta: {
+			title: "DOOMSCRLL Uygulaması",
+			description: "Bu DOOMSCRLL uygulaması. Buradan bugünün projelerini keşfedebilirsin.",
+		},
+		copy: "What are you looking for today?",
+	},
 	errorPage: {
 		header: "Aha, bir hata yakaladın!",
 		labelReturn: "Ana sayfaya dön",

@@ -21,6 +21,14 @@ export default {
 		},
 		labelTooltip: "You can hover over this button to see the tooltip attached.",
 	},
+	landing: {
+		meta: {
+			title: "DOOMSCRLL App",
+			description:
+				"This is the DOOMSCRLL's audience app. You can explore today's selection of independent projects from here.",
+		},
+		copy: "What are you looking for today?",
+	},
 	errorPage: {
 		header: "Hey, you found an error!",
 		labelReturn: "Return home",
