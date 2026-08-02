@@ -1,47 +1,34 @@
 <script lang="ts">
-  import { enhance } from "$app/forms"
-  import { afterNavigate, invalidateAll } from "$app/navigation"
-  import { page } from "$app/state"
-  import type { PageData } from "./$types"
+	//import type { PageData } from "./$types"
 
 	import { LOCALE_DEFAULT } from "const/locales"
-	import { DateFmtContext, LocaleContext, ProfileContext } from "contexts/shared.svelte"
-	import type Category from "models/category"
-	import { getCategories, getCategoryLabelFor } from "repos/category-repo"
+	import { DateFmtContext, LocaleContext } from "contexts/shared.svelte"
 	import { getDictionaryOf } from "repos/locale-repo"
+	import { getProjectCountsFor } from "repos/project-repo"
 	import DDate from "utils/d-date"
 	import StylisticTimeFormat from "utils/stylistic-time-fmt"
 
-	import BrandNav from "comps/brand-nav.svelte"
 	import SlabAnchor from "comps/buttons/slab-anchor.svelte"
-	import SlabButton from "comps/buttons/slab-button.svelte"
-	import CalendarTable from "comps/calendar/calendar-table.svelte"
-	import Countdown from "comps/countdown.svelte"
-	import DoomlitsModal from "comps/doomlits-modal.svelte"
-	import Dropdown from "comps/form/dropdown.svelte"
-	import HelpModal from "comps/help-modal.svelte"
+	import DoomscrllLogo from "comps/icons/doomscrll-logo.svelte"
+	import DoomscrllWordmark from "comps/icons/doomscrll-wordmark.svelte"
 	import Icon from "comps/icons/icon.svelte"
-	import ReservationForm from "comps/reservation-form.svelte"
-	import ReservationProgress from "comps/reservation-progress.svelte"
-	import UrgentModal from "comps/urgent-modal.svelte"
-
+	/*
 	type Props = {
 		data: PageData
 	}
 
-	const { data }: Props = $props()
+	const { data }: Props = $props()*/
 
 	const locale = $derived(LocaleContext.context.value!)
-	const dict = $derived(getDictionaryOf(locale))
+	const dict = $derived(getDictionaryOf(locale).landing)
 	const fmt = $derived(
 		DateFmtContext.context.value || new StylisticTimeFormat(LocaleContext.context.value || LOCALE_DEFAULT),
 	)
 
-	let selectedCategory = $state<Category>("Video Games")
+	const today = DDate.today()
+	const testData = getProjectCountsFor(today)
 
-	afterNavigate(({ type }) => {
-		if (type === "popstate") invalidateAll()
-	})
+	// TODO: Add a hamburger menu somewhere.
 </script>
 
 <svelte:head>
@@ -49,10 +36,22 @@
 	<meta name="description" content={dict.meta.description} />
 </svelte:head>
 
-
-<main class="grid h-screen w-full grid-rows-[auto_1fr] gap-4 overflow-hidden px-6 supports-[height:100dvh]:h-dvh">
-	<BrandNav activeDraftRefId={data.activeDraftId} hasDoomlitsMenu={true} bind:helpModalTrigger bind:doomlitMenuTrigger />
-	<section class="grid h-full w-full grid-cols-2 gap-12">
-
+<main class="flex h-screen w-full flex-col justify-between overflow-hidden supports-[height:100dvh]:h-dvh">
+	<DoomscrllWordmark />
+	<section class="flex w-full flex-col items-center gap-4">
+		<p class="font-mono text-xl tracking-wider uppercase">{fmt.getFullDate(today)}</p>
+		<p class="font-mono font-bold tracking-widest uppercase">{fmt.getLongDayName(today)}</p>
 	</section>
+	<p class="mx-6 font-serif text-2xl font-medium tracking-wide text-inverse">{dict.copy}</p>
+	<ul class="flex w-full list-disc flex-col gap-2 pl-10">
+		{#each testData as data (data.category)}
+			<li>
+				<SlabAnchor href="/explore?category={data.category}" variant="text" fit="min" hasUnderline={true}>
+					{data.category} ({data.count})
+					<Icon icon="ArrowForward" size="small" />
+				</SlabAnchor>
+			</li>
+		{/each}
+	</ul>
+	<div class="flex w-full justify-center" aria-hidden="true"><DoomscrllLogo size="large" /></div>
 </main>
