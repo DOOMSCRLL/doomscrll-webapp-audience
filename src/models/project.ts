@@ -6,9 +6,9 @@ export type ProjectStatus = "draft" | "incomplete" | "ready" | "canceled"
 
 type Project = {
 	referenceId: string
-	showcaseDate: string
-	status: ProjectStatus
-	reservedAt: string | null
+	showcaseDate?: string
+	status?: ProjectStatus
+	reservedAt?: string | null
 	name: string
 	category: Category
 	primaryPlatform: PlatformName
@@ -20,22 +20,21 @@ type Project = {
 	screenshotPaths: string[] | null
 	secondaryPlatforms: PlatformRecord[] | null
 	videoUrl: string | null
-	createdAt: string
+	creator: {
+		username: string
+		description: string | null
+		url: string | null
+	}
+	createdAt?: string
 }
 
 export type ProjectPreview = {
+	referenceId: string
 	name: string
 	authorUsername: string
 	category: Category
 	tags: ProjectTag[]
-}
-
-export type CreatorProjectEntry = {
-	referenceId: string
-	category: Category
-	name: string
-	showcaseDate: string
-	status: ProjectStatus
+	coverImagePath: string | null
 }
 
 export type { Project as default }
