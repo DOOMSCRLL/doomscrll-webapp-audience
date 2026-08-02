@@ -1,6 +1,5 @@
 import { API_BASE_URL } from "$env/static/private"
 import { error } from "@sveltejs/kit"
-import { getCategories } from "repos/category-repo"
 import type { APIResponse } from "models/internal/api"
 import type ProjectCategoryCounts from "models/internal/project-category-counts"
 import type Project from "models/project"
@@ -31,13 +30,11 @@ export async function getProjectCountsFor(
 		throw error(400, { message: result.error.message })
 	}
 
-	const countsMap = new Map<string, number>(result.data.map((item) => [item.category, item.count]))
-
-	return getCategories()
-		.filter((category) => !category.startsWith("Internal_"))
-		.map((category) => ({
-			category,
-			count: String(countsMap.get(category) ?? 0),
+	return result.data
+		.filter((item) => !item.category.startsWith("Internal_") && item.count > 0)
+		.map((item) => ({
+			category: item.category,
+			count: String(item.count),
 		}))
 }
 
