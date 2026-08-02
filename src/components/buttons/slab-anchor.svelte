@@ -53,7 +53,7 @@
 		}),
 		ttm(fit, {
 			max: "w-full",
-			min: "w-min",
+			min: "w-fit",
 			square: "aspect-square p-0",
 		}),
 		ttm(variant, {
@@ -70,5 +70,5 @@
 				? "text-inverse hover:text-obverse active:text-obverse"
 				: "text-accent not-disabled:hover:text-obverse not-disabled:active:text-obverse",
 		}),
-		hasUnderline && variant === "text" && "underline underline-offset-4",
+		hasUnderline && variant === "text" && "underline underline-offset-2",
 	]}>{@render children?.()}</a>
