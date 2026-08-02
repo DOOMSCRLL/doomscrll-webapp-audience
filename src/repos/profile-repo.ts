@@ -17,4 +17,3 @@ export async function getPublicProfile(username: string, customFetch: typeof fet
 	if (!response.ok) throw error(response.status, { message: result.error || "Failed to fetch public profile" })
 	return result.profile || null
 }
-
