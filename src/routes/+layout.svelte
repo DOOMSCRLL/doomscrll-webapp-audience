@@ -3,7 +3,7 @@
 
 	import { onMount, untrack } from "svelte"
 
-	import { DateFmtContext, LocaleContext, ProfileContext } from "contexts/shared.svelte.js"
+	import { DateFmtContext, LocaleContext } from "contexts/shared.svelte.js"
 	import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill"
 	import StylisticTimeFormat from "utils/stylistic-time-fmt.js"
 
