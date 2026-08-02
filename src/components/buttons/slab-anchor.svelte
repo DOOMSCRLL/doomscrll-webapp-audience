@@ -11,17 +11,7 @@
 	type HorizontalFit = "max" | "min" | "square"
 
 	type Props = {
-		href:
-			| "/"
-			| `/?year=${number}&month=${number}`
-			| `/preview/${string}`
-			| "/login"
-			| "/profile-settings"
-			| `/reserve/${string}`
-			| `/doomlits/${string}`
-			| `/doomlits/${string}/reschedule`
-			| `/doomlits/${string}/reschedule?year=${number}&month=${number}`
-			| `/doomlits/${string}/refund`
+		href: "/" | `/explore?category=${string}`
 		variant?: ButtonVariant
 		hasAccent?: boolean
 		size?: ButtonSize
