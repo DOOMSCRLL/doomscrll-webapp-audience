@@ -1,14 +1,98 @@
+import { API_BASE_URL } from "$env/static/private"
+import { error } from "@sveltejs/kit"
+import { getCategories } from "repos/category-repo"
+import type { APIResponse } from "models/internal/api"
 import type ProjectCategoryCounts from "models/internal/project-category-counts"
+import type Project from "models/project"
+import type { ProjectPreview } from "models/project"
+import type Category from "models/category"
+import type ProjectTag from "models/project-tag"
 import type DDate from "utils/d-date"
 
-export function getProjectCountsFor(date: DDate): ProjectCategoryCounts[] {
-	console.error("getProjectsCategoryCounts function is not implemented!")
-	void date
-	return [
-		{ category: "Video Games", count: "14" },
-		{ category: "Audio", count: "7" },
-		{ category: "Publishing", count: "9" },
-		{ category: "Software & Tools", count: "5" },
-		{ category: "Goods", count: "5" },
-	]
+export type FeedQuery = {
+	category?: string
+	tag?: string
+	platform?: string
+	page?: number
+	batchSize?: number
+}
+
+export async function getProjectCountsFor(
+	date: DDate,
+	customFetch: typeof fetch = fetch,
+): Promise<ProjectCategoryCounts[]> {
+	const response = await customFetch(`${API_BASE_URL}/projects/projects-per-category?date=${date.toISOString()}`)
+	if (!response.ok) {
+		throw error(response.status, { message: "Failed to fetch project category counts" })
+	}
+
+	const result = (await response.json()) as APIResponse<{ category: Category; count: number }[]>
+	if (!result.success) {
+		throw error(400, { message: result.error.message })
+	}
+
+	const countsMap = new Map<string, number>(result.data.map((item) => [item.category, item.count]))
+
+	return getCategories()
+		.filter((category) => !category.startsWith("Internal_"))
+		.map((category) => ({
+			category,
+			count: String(countsMap.get(category) ?? 0),
+		}))
+}
+
+export async function getProjectFeed(query?: FeedQuery, customFetch: typeof fetch = fetch): Promise<ProjectPreview[]> {
+	const params = new URLSearchParams()
+	if (query?.category) params.set("category", query.category)
+	if (query?.tag) params.set("tag", query.tag)
+	if (query?.platform) params.set("platform", query.platform)
+	if (query?.page !== undefined) params.set("page", String(query.page))
+	if (query?.batchSize !== undefined) params.set("batchSize", String(query.batchSize))
+
+	const response = await customFetch(`${API_BASE_URL}/projects?${params.toString()}`)
+	if (!response.ok) {
+		throw error(response.status, { message: "Failed to fetch project feed" })
+	}
+
+	type FeedResponseItem = {
+		referenceId: string
+		name: string
+		category: Category
+		tags: ProjectTag[] | null
+		coverImagePath: string | null
+		creator: { username: string }
+	}
+
+	const result = (await response.json()) as APIResponse<FeedResponseItem[]>
+	if (!result.success) {
+		throw error(400, { message: result.error.message })
+	}
+
+	return result.data.map((item) => ({
+		referenceId: item.referenceId,
+		name: item.name,
+		authorUsername: item.creator.username,
+		category: item.category,
+		tags: item.tags ?? [],
+		coverImagePath: item.coverImagePath,
+	}))
+}
+
+export async function getProjectByReference(
+	referenceId: string,
+	customFetch: typeof fetch = fetch,
+): Promise<Project | null> {
+	const response = await customFetch(`${API_BASE_URL}/projects/${referenceId}`)
+	if (response.status === 404) return null
+	if (!response.ok) {
+		throw error(response.status, { message: "Failed to fetch project details" })
+	}
+
+	const result = (await response.json()) as APIResponse<Project>
+	if (!result.success) {
+		if (result.error.code === "NOT_FOUND" || result.error.code === "PROJECT_NOT_FOUND") return null
+		throw error(400, { message: result.error.message })
+	}
+
+	return result.data
 }
