@@ -1,10 +1,12 @@
-import { API_BASE_URL } from "$env/static/private"
 import { error } from "@sveltejs/kit"
+
+import { API_BASE_URL } from "$env/static/private"
+
+import type Category from "models/category"
 import type { APIResponse } from "models/internal/api"
 import type ProjectCategoryCounts from "models/internal/project-category-counts"
 import type Project from "models/project"
 import type { ProjectPreview } from "models/project"
-import type Category from "models/category"
 import type ProjectTag from "models/project-tag"
 import type DDate from "utils/d-date"
 
