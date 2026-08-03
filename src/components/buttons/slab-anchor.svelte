@@ -70,5 +70,5 @@
 				? "text-inverse hover:text-obverse active:text-obverse"
 				: "text-accent not-disabled:hover:text-obverse not-disabled:active:text-obverse",
 		}),
-		hasUnderline && variant === "text" && "underline underline-offset-2",
+		hasUnderline && variant === "text" && "underline",
 	]}>{@render children?.()}</a>
