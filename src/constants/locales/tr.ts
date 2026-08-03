@@ -31,6 +31,13 @@ export default {
 		copy: "Bugün neyi keşfedelim?",
 		noProjectCopy: ctsr`Görünüşe göre bugün hiçbir proje sunulmamış!${MARKER_NEWLINE}Lütfen yarın tekrar dene~`,
 	},
+	feed: {
+		meta: {
+			title: "Projeleri | DOOMSCRLL",
+			description:
+				"Bu sayfada, bugünün seçilen kategoriye ait projelerini keşfedebilirsin. Ayrıca etiketleri kullanarak arama da yapabilirsin.",
+		},
+	},
 	errorPage: {
 		header: "Aha, bir hata yakaladın!",
 		labelReturn: "Ana sayfaya dön",

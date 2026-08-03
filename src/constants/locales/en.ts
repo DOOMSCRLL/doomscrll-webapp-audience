@@ -31,6 +31,13 @@ export default {
 		copy: "What are you looking for today?",
 		noProjectCopy: ctsr`It seems that no projects were published for today!${MARKER_NEWLINE}Please check again tomorrow~`,
 	},
+	feed: {
+		meta: {
+			title: "Feed | DOOMSCRLL",
+			description:
+				"You can view the feed of today's projects for the selected category. You can also use filter function to query using tags.",
+		},
+	},
 	errorPage: {
 		header: "Hey, you found an error!",
 		labelReturn: "Return home",
