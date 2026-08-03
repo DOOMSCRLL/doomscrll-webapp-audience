@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { invalidateAll } from "$app/navigation"
-	import KEYS_COOKIE from "const/cookies"
 
+	import KEYS_COOKIE from "const/cookies"
 	import { LOCALES } from "const/locales"
 	import { DateFmtContext, LocaleContext } from "contexts/shared.svelte"
 	import { getLocaleFlag, getLocaleName } from "utils/locale-utils"
@@ -38,8 +38,8 @@
 	name="lang-selector"
 	id="lang-selector"
 	class={[
-		"cursor-pointer font-mono font-bold tracking-wider uppercase",
-		"rounded-2xl border-2 border-transparent bg-obverse px-4",
+		"cursor-pointer font-mono font-bold tracking-wider text-inverse uppercase",
+		"h-12 rounded-2xl border-2 border-transparent bg-obverse px-4",
 		"hover:bg-inverse/20 active:border-inverse",
 	]}
 	bind:value={localeState.value}>
