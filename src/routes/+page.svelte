@@ -54,10 +54,8 @@
 	{:else}
 		<p class="mx-6 font-serif text-2xl font-medium tracking-wide text-inverse">{dict.noProjectCopy}</p>
 	{/if}
-	<div
-		class="grid w-full grid-cols-[1fr_auto_1fr] items-center justify-items-end px-6 [&>svg]:col-2"
-		aria-hidden="true">
+	<section class="grid w-full grid-cols-[1fr_auto_1fr] items-center justify-items-end px-6 [&>svg]:col-2">
 		<DoomscrllLogo size="large" />
 		<ContextMenu />
-	</div>
+	</section>
 </main>
