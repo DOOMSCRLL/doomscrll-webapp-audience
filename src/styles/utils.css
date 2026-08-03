@@ -81,3 +81,18 @@
 		transform: --value(--arrow-transform-*);
 	}
 }
+
+@theme {
+	--img-mask-biscuit: url("/img-masks/pattern-biscuit.svg");
+	--img-mask-bread: url("/img-masks/pattern-bread.svg");
+	--img-mask-flower-1: url("/img-masks/pattern-flower.svg");
+	--img-mask-flower-2: url("/img-masks/pattern-flower-2.svg");
+	--img-mask-hourglass-1: url("/img-masks/pattern-hourglass.svg");
+	--img-mask-hourglass-2: url("/img-masks/pattern-hourglass-2.svg");
+	--img-mask-stair: url("/img-masks/pattern-stair.svg");
+	--img-mask-stamp: url("/img-masks/pattern-stamp.svg");
+	--img-mask-windmill: url("/img-masks/pattern-windmill.svg");
+}
+@utility img-mask-* {
+	mask-image: --value(--img-mask-*);
+}
