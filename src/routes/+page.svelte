@@ -8,7 +8,7 @@
 	import StylisticTimeFormat from "utils/stylistic-time-fmt"
 
 	import SlabAnchor from "comps/buttons/slab-anchor.svelte"
-	import SlabButton from "comps/buttons/slab-button.svelte"
+	import ContextMenu from "comps/context-menu.svelte"
 	import DoomscrllLogo from "comps/icons/doomscrll-logo.svelte"
 	import DoomscrllWordmark from "comps/icons/doomscrll-wordmark.svelte"
 	import Icon from "comps/icons/icon.svelte"
@@ -58,6 +58,6 @@
 		class="grid w-full grid-cols-[1fr_auto_1fr] items-center justify-items-end px-6 [&>svg]:col-2"
 		aria-hidden="true">
 		<DoomscrllLogo size="large" />
-		<SlabButton variant="text" fit="square"><Icon icon="Settings" /></SlabButton>
+		<ContextMenu />
 	</div>
 </main>
