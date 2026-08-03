@@ -12,6 +12,7 @@ import Cancel from "./icon-cancel.svelte"
 import Copy from "./icon-copy.svelte"
 import DoomeyeClosed from "./icon-doomeye-closed.svelte"
 import Doomeye from "./icon-doomeye.svelte"
+import Hamburger from "./icon-hamburger.svelte"
 import Help from "./icon-help.svelte"
 import Link from "./icon-link.svelte"
 import Mail from "./icon-mail.svelte"
@@ -33,6 +34,7 @@ const ICONS = {
 	Copy,
 	DoomeyeClosed,
 	Doomeye,
+	Hamburger,
 	Help,
 	Link,
 	Mail,
