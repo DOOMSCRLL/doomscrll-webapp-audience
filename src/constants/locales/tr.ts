@@ -6,12 +6,6 @@ export default {
 		labelCloseMenu: "Kapat",
 		labelReturnHome: "Geri Dön",
 		labelExternalIconSuffix: "platformunun logosu.",
-		navbar: {
-			ariaLabelLangSelect: "DOOMSCRLL'da kullanmak için bir dil seçin.",
-			ariaLabelHelp: "Yardım menüsünü aç.",
-			suffixReservationProgress: "DOOMLIT ayırtıldı.",
-			labelActiveDraftWarning: "Aktif Taslakları Gör",
-		},
 		copyableText: {
 			ariaLabelCopy: "Sorgu kodunu kopyalamak için buraya tıkla.",
 			status: {
@@ -21,6 +15,13 @@ export default {
 			labelInstructions: "Metni panona kopyalamak için buraya tıkla.",
 		},
 		labelTooltip: "Fareni bu düğmenin üzerine getirerek bağlı araç ipuçlarını görebilirsin.",
+		contextMenu: {
+			ariaLabelMenuTrigger: "DOOMSCRLL uygulamasının bağlam menüsünü açmak için bu butona tıklayabilirsin.",
+			ariaLabelLangSelect: "DOOMSCRLL'da kullanmak için bir dil seçin.",
+			labelContact: "Bize ulaş",
+			labelHelp: "Yardım",
+			labelLegal: "Yasal",
+		},
 	},
 	landing: {
 		meta: {

@@ -5,12 +5,6 @@ export default {
 		labelCloseMenu: "Close",
 		labelReturnHome: "Return",
 		labelExternalIconSuffix: "platform logo.",
-		navbar: {
-			ariaLabelLangSelect: "Choose a language to use DOOMSCRLL in.",
-			ariaLabelHelp: "Open help modal.",
-			suffixReservationProgress: "DOOMLITs reserved",
-			labelActiveDraftWarning: "See Active Drafts",
-		},
 		copyableText: {
 			ariaLabelCopy: "Click to copy your reference ID.",
 			status: {
@@ -20,6 +14,13 @@ export default {
 			labelInstructions: "Click to copy this text to your clipboard.",
 		},
 		labelTooltip: "You can hover over this button to see the tooltip attached.",
+		contextMenu: {
+			ariaLabelMenuTrigger: "Click this button to open the context menu for the DOOMSCRLL app.",
+			ariaLabelLangSelect: "Choose a language to use DOOMSCRLL in.",
+			labelContact: "Contact us",
+			labelHelp: "Help",
+			labelLegal: "Legal",
+		},
 	},
 	landing: {
 		meta: {
