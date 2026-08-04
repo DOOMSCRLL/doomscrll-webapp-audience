@@ -23,7 +23,7 @@
 </svelte:head>
 
 <main class="flex h-screen w-full flex-col justify-between overflow-hidden supports-[height:100dvh]:h-dvh">
-	<section class="flex flex-col gap-10 overflow-y-auto px-6">
+	<section class="flex flex-col gap-10 overflow-x-hidden overflow-y-auto px-6">
 		{#each data.previews as preview (preview.referenceId)}
 			<PreviewCard {preview} />
 		{/each}
