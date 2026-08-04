@@ -21,7 +21,10 @@
 	</section>
 	<section class="grid w-full grid-cols-[auto_1fr_auto] items-center justify-items-center">
 		<Icon icon="Starmark" size="small" />
-		<p class="font-serif text-2xl font-medium text-inverse">{preview.name}</p>
+		<p
+			class="w-full overflow-hidden text-center font-serif text-2xl font-medium text-nowrap text-ellipsis text-inverse">
+			{preview.name}
+		</p>
 		<SlabAnchor
 			href="/project/{preview.referenceId}"
 			variant="text"
