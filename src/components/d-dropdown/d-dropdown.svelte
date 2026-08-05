@@ -1,13 +1,9 @@
 <script lang="ts">
-	import BadgeText from "comps/badge-text.svelte"
 	import SlabButton from "comps/buttons/slab-button.svelte"
-	import TooltipButton from "comps/buttons/tooltip-button.svelte"
 	import Icon from "comps/icons/icon.svelte"
 	import Popover from "comps/popover.svelte"
 	import DOptionGroup from "./d-option-group.svelte"
 	import DOption from "./d-option.svelte"
-
-	type StatusMessage = { type?: "error" | "info"; message?: string }
 
 	type OptData = {
 		value: string
@@ -22,13 +18,9 @@
 		name: string
 		label: string
 		placeholder: string
-		instructions?: string
-		tooltip?: string
-		status?: StatusMessage
 		emptyQueryLabel: string
 		layout?: "row" | "column"
 		options: OptGroupData[]
-		isRequired?: boolean
 		isDisabled?: boolean
 		selectedValue?: string
 		onChange?: (value: string) => void
@@ -38,13 +30,9 @@
 		name,
 		label,
 		placeholder,
-		instructions,
-		tooltip,
-		status,
 		emptyQueryLabel,
 		layout = "column",
 		options,
-		isRequired = false,
 		isDisabled = false,
 		selectedValue = $bindable(),
 		onChange,
@@ -152,7 +140,7 @@
 {/snippet}
 
 <section class="flex h-min w-full flex-col items-start gap-4">
-	<input type="hidden" required={isRequired} {name} bind:value={selectedValue} />
+	<input type="hidden" {name} bind:value={selectedValue} />
 
 	<section
 		class="flex w-full {layout === 'column' ? 'flex-col items-start gap-4' : 'flex-row items-center gap-10'}"
@@ -162,11 +150,8 @@
 			<p
 				id="{name}-label"
 				class="cursor-text font-serif text-2xl font-medium tracking-tighter whitespace-nowrap text-inverse">
-				{#if isRequired}<span class="text-[red]">*&nbsp;</span>{/if}
-				{label}
-				{#if instructions}<BadgeText text={instructions} />{/if}:
+				{label}:
 			</p>
-			{#if tooltip}<TooltipButton id="{name}-tooltip" content={tooltip} />{/if}
 		</div>
 
 		<SlabButton
@@ -180,18 +165,6 @@
 			<Icon icon="ArrowDropdown" size="small" />
 		</SlabButton>
 	</section>
-
-	{#if status?.message}
-		<p
-			class={[
-				"font-serif text-xl font-medium tracking-tight",
-				status.type === "error" ? "text-accent" : "text-inverse",
-				"ml-4 flex items-center gap-2",
-			]}>
-			<Icon icon={status.type === "error" ? "Cancel" : "Help"} />
-			{status.message}
-		</p>
-	{/if}
 
 	{#if isOpen}
 		<Popover
@@ -227,7 +200,7 @@
 						{@render dopt(opt)}
 					{:else}
 						<li role="presentation">
-							<p class="text-inverse text-2xl text-center italic font-serif">{emptyQueryLabel}</p>
+							<p class="text-center font-serif text-2xl text-inverse italic">{emptyQueryLabel}</p>
 						</li>
 					{/each}
 				{:else}
