@@ -12,8 +12,8 @@
 	let trigger = $state<HTMLButtonElement>()
 </script>
 
-<SlabButton fit="square" variant="text" ariaLabel={dict.ariaLabelMenuTrigger} bind:reference={trigger}>
-	<Icon icon="Hamburger" />
+<SlabButton fit="square" variant="text" size="small" ariaLabel={dict.ariaLabelMenuTrigger} bind:reference={trigger}>
+	<Icon icon="Hamburger" size="small" />
 </SlabButton>
 <Popover horizontalAlignment="right" verticalAlignment="bottom" doManageTrigger={true} bind:trigger>
 	<LanguageSelector label={dict.ariaLabelLangSelect} />
