@@ -16,10 +16,8 @@
 
 	type Props = {
 		name: string
-		label: string
 		placeholder: string
 		emptyQueryLabel: string
-		layout?: "row" | "column"
 		options: OptGroupData[]
 		isDisabled?: boolean
 		selectedValue?: string
@@ -28,10 +26,8 @@
 
 	let {
 		name,
-		label,
 		placeholder,
 		emptyQueryLabel,
-		layout = "column",
 		options,
 		isDisabled = false,
 		selectedValue = $bindable(),
@@ -142,6 +138,17 @@
 <section class="flex h-min w-full flex-col items-start gap-4">
 	<input type="hidden" {name} bind:value={selectedValue} />
 
+	<SlabButton
+		variant="outlined"
+		alignment="right"
+		fit="max"
+		{isDisabled}
+		onClick={handleTriggerOnClick}
+		bind:reference={trigger}>
+		{triggerLabel}
+		<Icon icon="ArrowDropdown" size="small" />
+	</SlabButton>
+	<!--
 	<section
 		class="flex w-full {layout === 'column' ? 'flex-col items-start gap-4' : 'flex-row items-center gap-10'}"
 		aria-describedby="{name}-label">
@@ -164,7 +171,7 @@
 			{triggerLabel}
 			<Icon icon="ArrowDropdown" size="small" />
 		</SlabButton>
-	</section>
+	</section>-->
 
 	{#if isOpen}
 		<Popover
