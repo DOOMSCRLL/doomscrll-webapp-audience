@@ -12,8 +12,10 @@ export const load: PageServerLoad = async ({ fetch, url, parent }) => {
 	}
 
 	const categoryParam = url.searchParams.get("category")
-	const validCategory = parentData.projectCounts.find((item) => item.category === categoryParam)?.category
-	const category = validCategory ?? parentData.projectCounts[0].category
+	const validCategoryItem = parentData.projectCounts.find((item) => item.category === categoryParam)
+	const selectedItem = validCategoryItem ?? parentData.projectCounts[0]
+	const category = selectedItem.category
+	const totalProjectCount = Number(selectedItem.count)
 
 	const tag = url.searchParams.get("tag") ?? undefined
 	const platform = url.searchParams.get("platform") ?? undefined
@@ -46,5 +48,10 @@ export const load: PageServerLoad = async ({ fetch, url, parent }) => {
 	return {
 		previews,
 		selectedCategory: category,
+		totalProjectCount,
+		page,
+		batchSize,
+		tag,
+		platform,
 	}
 }
