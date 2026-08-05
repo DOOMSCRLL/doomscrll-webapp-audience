@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ProjectPreview } from "models/project"
+	import { generateColorFrom, hslStrToCss } from "utils/generate-color-from"
 	import SlabAnchor from "./buttons/slab-anchor.svelte"
 	import Icon from "./icons/icon.svelte"
 	import PreviewCoverImage from "./preview-cover-image.svelte"
@@ -14,9 +15,13 @@
 <section class="flex flex-col gap-4">
 	<p class="font-mono font-bold tracking-wider text-inverse">@{preview.authorUsername}</p>
 	<PreviewCoverImage src={preview.coverImagePath ?? ""} alt="MISSING_ALT" />
-	<section class="flex h-min w-full gap-4">
+	<section class="flex h-min w-full gap-2">
 		{#each preview.tags as tag (tag)}
-			<p class="font-serif font-bold whitespace-nowrap text-obverse group-even:italic">{tag}</p>
+			<p
+				class="font-serif font-bold whitespace-nowrap even:italic"
+				style="color: {hslStrToCss(generateColorFrom(tag))}">
+				{tag}
+			</p>
 		{/each}
 	</section>
 	<section class="grid w-full grid-cols-[auto_1fr_auto] items-center justify-items-center">
