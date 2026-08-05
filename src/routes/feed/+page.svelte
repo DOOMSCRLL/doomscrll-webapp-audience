@@ -6,6 +6,7 @@
 	import { getDictionaryOf } from "repos/locale-repo"
 
 	import ContextMenu from "comps/context-menu.svelte"
+	import DoomscrllWordmark from "comps/icons/doomscrll-wordmark.svelte"
 	import PreviewCard from "comps/preview-card.svelte"
 
 	type Props = {
@@ -23,9 +24,11 @@
 </svelte:head>
 
 <main class="flex h-screen w-full flex-col justify-between overflow-hidden supports-[height:100dvh]:h-dvh">
-	<section class="flex flex-col gap-10 overflow-x-hidden overflow-y-auto px-6">
-		{#each data.previews as preview (preview.referenceId)}
+	<DoomscrllWordmark />
+	<section class="flex flex-col gap-10 overflow-x-hidden overflow-y-auto px-6 pt-6">
+		{#each data.previews as preview, itr (preview.referenceId)}
 			<PreviewCard {preview} />
+			{#if itr < data.previews.length - 1}<hr class="w-full border border-inverse" />{/if}
 		{/each}
 	</section>
 	<section class="flex h-min w-full items-center justify-center bg-obverse py-2">
