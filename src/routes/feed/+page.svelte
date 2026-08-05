@@ -6,10 +6,12 @@
 	import { getDictionaryOf } from "repos/locale-repo"
 
 	import { afterNavigate } from "$app/navigation"
-	import ContextMenu from "comps/context-menu.svelte"
-	import DoomscrllWordmark from "comps/icons/doomscrll-wordmark.svelte"
+	import AppNavbar from "comps/app-navbar.svelte"
+	import SlabButton from "comps/buttons/slab-button.svelte"
+	import Icon from "comps/icons/icon.svelte"
 	import PageNav from "comps/page-nav.svelte"
 	import PreviewCard from "comps/preview-card.svelte"
+	import QueryModal from "comps/query-modal.svelte"
 
 	type Props = {
 		data: PageData
@@ -47,6 +49,11 @@
 		},
 	}
 	// #endregion
+
+	// #region Category Management
+	let queryModalTrigger = $state<HTMLButtonElement>()
+	//let selectedCategory = $state(untrack(() => data.selectedCategory))
+	// #endregion
 </script>
 
 <svelte:head>
@@ -55,15 +62,23 @@
 </svelte:head>
 
 <main class="flex h-screen w-full flex-col justify-between overflow-hidden supports-[height:100dvh]:h-dvh">
-	<DoomscrllWordmark />
+	<AppNavbar />
 	<section class="flex flex-col gap-10 overflow-x-hidden overflow-y-auto px-6 pt-6" bind:this={feedContainer}>
 		{#each data.previews as preview, itr (preview.referenceId)}
 			<PreviewCard {preview} />
 			{#if itr < data.previews.length - 1}<hr class="w-full border border-inverse" />{/if}
 		{/each}
 	</section>
-	<section class="flex h-min w-full items-center justify-center bg-obverse py-2">
+	<section
+		class={[
+			"grid h-min w-full grid-cols-3 items-center justify-center bg-obverse px-4 py-2",
+			"[&>section]:col-2 [&>section]:justify-self-center",
+			"[&>button]:justify-self-end",
+		]}>
 		<PageNav {currentPage} {countPages} {prevHref} {nextHref} />
-		<ContextMenu />
+		<SlabButton variant="filled" fit="square" ariaLabel="MISSING_ARIA_LABEL" bind:reference={queryModalTrigger}
+			><Icon icon="Settings" /></SlabButton>
 	</section>
 </main>
+
+<QueryModal bind:trigger={queryModalTrigger} />
