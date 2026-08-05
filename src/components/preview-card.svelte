@@ -11,7 +11,7 @@
 	const { preview }: Props = $props()
 </script>
 
-<section class="flex flex-col items-center gap-4">
+<section class="flex flex-col gap-4">
 	<p class="font-mono font-bold tracking-wider text-inverse">@{preview.authorUsername}</p>
 	<PreviewCoverImage src={preview.coverImagePath ?? ""} alt="MISSING_ALT" />
 	<section class="flex h-min w-full gap-4">
