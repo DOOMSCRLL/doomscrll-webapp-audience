@@ -37,6 +37,11 @@ export default {
 			description:
 				"Bu sayfada, bugünün seçilen kategoriye ait projelerini keşfedebilirsin. Ayrıca etiketleri kullanarak arama da yapabilirsin.",
 		},
+		previewCard: { altCoverSuffix: "kapak fotoğrafı.", ariaPreviewAction: "Bu projenin proje sayfasına git." },
+		nav: {
+			labelPrevPage: "Önceki projeleri gör.",
+			labelNextPage: "Sonraki projeleri gör.",
+		},
 	},
 	errorPage: {
 		header: "Aha, bir hata yakaladın!",

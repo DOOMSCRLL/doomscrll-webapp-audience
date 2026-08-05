@@ -37,6 +37,11 @@ export default {
 			description:
 				"You can view the feed of today's projects for the selected category. You can also use filter function to query using tags.",
 		},
+		previewCard: { altCoverSuffix: "cover image.", ariaPreviewAction: "Go this project's project page." },
+		nav: {
+			labelPrevPage: "Go to the previous page of projects.",
+			labelNextPage: "Go to the next page of projects.",
+		},
 	},
 	errorPage: {
 		header: "Hey, you found an error!",
