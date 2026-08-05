@@ -15,7 +15,7 @@
 <section class="flex flex-col gap-4">
 	<p class="font-mono font-bold tracking-wider text-inverse">@{preview.authorUsername}</p>
 	<PreviewCoverImage src={preview.coverImagePath ?? ""} alt="MISSING_ALT" />
-	<section class="flex h-min w-full gap-2">
+	<section class="flex h-min w-full flex-wrap justify-center gap-4 gap-y-0">
 		{#each preview.tags as tag (tag)}
 			<p
 				class="font-serif font-bold whitespace-nowrap even:italic"
