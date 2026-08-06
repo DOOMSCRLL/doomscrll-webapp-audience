@@ -52,4 +52,19 @@
 		appearance: none;
 		text-rendering: optimizeLegibility;
 	}
+
+	hr {
+		border: none;
+
+		width: 100%;
+		height: 1rem; /* wave height */
+
+		background: var(--color-inverse);
+
+		mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 -4 20 18' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5 Q 5 0, 10 5 T 20 5' fill='none' stroke='black' stroke-width='4' stroke-linecap='square' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+		mask-repeat: repeat-x;
+		mask-size: 1rem 100%; /* wave width | mask height*/
+
+		flex-shrink: 0; /* for some reason flex box shrinks the <hr>s height to 0 .-. */
+	}
 }
