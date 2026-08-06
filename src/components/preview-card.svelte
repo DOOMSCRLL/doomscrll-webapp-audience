@@ -20,7 +20,7 @@
 <section class="flex flex-col gap-4">
 	<p class="font-mono font-bold tracking-wider text-inverse">@{preview.authorUsername}</p>
 	<PreviewCoverImage src={preview.coverImagePath ?? ""} alt="{preview.name} {dict.altCoverSuffix}" />
-	<section class="flex h-min w-full flex-wrap justify-center gap-2 gap-y-0">
+	<section class="flex h-min w-full flex-wrap justify-center gap-1">
 		{#each preview.tags as tag (tag)}
 			<TagChip {tag} />
 		{/each}
