@@ -22,6 +22,9 @@ export default {
 			labelHelp: "Yardım",
 			labelLegal: "Yasal",
 		},
+		appbar: {
+			ariaLabelBack: "Ana sayfaya dön.",
+		},
 	},
 	landing: {
 		meta: {
@@ -41,6 +44,21 @@ export default {
 		nav: {
 			labelPrevPage: "Önceki projeleri gör.",
 			labelNextPage: "Sonraki projeleri gör.",
+		},
+		modalQuery: {
+			title: "Projeleri süz",
+			categorySelect: {
+				label: "Farklı bir kategori seç",
+				placeholder: "Bir kategori seç.",
+				labelEmptyQuery: "Hiçbir kategori bulunamadı.",
+			},
+			query: {
+				copy: ctsr`Projeleri, bir etiket, özellik ya da platform yazarak arayabilir ve süzebilirsin.`,
+			},
+			actions: {
+				labelApply: "Süzgeçleri ekle",
+				labelCancel: "İptal et",
+			},
 		},
 	},
 	errorPage: {

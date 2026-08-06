@@ -21,6 +21,9 @@ export default {
 			labelHelp: "Help",
 			labelLegal: "Legal",
 		},
+		appbar: {
+			ariaLabelBack: "Go back to home.",
+		},
 	},
 	landing: {
 		meta: {
@@ -37,10 +40,25 @@ export default {
 			description:
 				"You can view the feed of today's projects for the selected category. You can also use filter function to query using tags.",
 		},
-		previewCard: { altCoverSuffix: "cover image.", ariaPreviewAction: "Go this project's project page." },
+		previewCard: { altCoverSuffix: "cover image.", ariaPreviewAction: "Go to this project's project page." },
 		nav: {
 			labelPrevPage: "Go to the previous page of projects.",
 			labelNextPage: "Go to the next page of projects.",
+		},
+		modalQuery: {
+			title: "Filter projects",
+			categorySelect: {
+				label: "Change category",
+				placeholder: "Select a category.",
+				labelEmptyQuery: "No such category was found.",
+			},
+			query: {
+				copy: ctsr`You can search and filter projects using a tag, feature, or platform.`,
+			},
+			actions: {
+				labelApply: "Apply filters",
+				labelCancel: "Cancel",
+			},
 		},
 	},
 	errorPage: {
