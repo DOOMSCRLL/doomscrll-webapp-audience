@@ -90,6 +90,11 @@
 				<p class="font-serif text-2xl tracking-tight">{dict.copyNoProject}</p>
 			</div>
 		{/each}
+		{#if data.tag}
+			<div class="sticky bottom-0 z-10 ml-auto">
+				<TagChip tag={data.tag as ProjectTag} isRemoveable={true} onRemove={removeTagQuery} />
+			</div>
+		{/if}
 	</section>
 	<section
 		class={[
