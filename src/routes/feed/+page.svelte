@@ -98,7 +98,7 @@
 			"[&>button]:justify-self-end",
 		]}>
 		<PageNav {currentPage} {countPages} {prevHref} {nextHref} />
-		<SlabButton variant="filled" fit="square" ariaLabel="MISSING_ARIA_LABEL" onClick={handleQueryModalOpen}>
+		<SlabButton variant="filled" fit="square" ariaLabel={dict.ariaLabelQueryTrigger} onClick={handleQueryModalOpen}>
 			<Icon icon="Settings" />
 		</SlabButton>
 	</section>
