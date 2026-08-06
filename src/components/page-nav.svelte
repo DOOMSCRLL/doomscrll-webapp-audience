@@ -4,7 +4,7 @@
 	import SlabAnchor from "./buttons/slab-anchor.svelte"
 	import Icon from "./icons/icon.svelte"
 
-	type FeedHref = `/feed?category=${string}&page=${number}`
+	type FeedHref = `/feed?${string}`
 	type Props = {
 		currentPage?: number
 		countPages?: number

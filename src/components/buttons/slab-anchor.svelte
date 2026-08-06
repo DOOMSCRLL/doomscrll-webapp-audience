@@ -11,7 +11,8 @@
 	type HorizontalFit = "max" | "min" | "square"
 
 	type Props = {
-		href: "/" | "/feed" | `/feed?category=${string}` | `/project/${string}`
+		//href: "/" | "/feed" | `/feed?category=${string}` | `/project/${string}`
+		href: "/" | "/feed" | `/feed?${string}` | `/project/${string}`
 		variant?: ButtonVariant
 		hasAccent?: boolean
 		size?: ButtonSize

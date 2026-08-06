@@ -4,7 +4,7 @@ import type { FeedQuery } from "repos/project-repo"
 export const DEFAULT_SIZE_BATCH_FEED = 10
 export const DEFAULT_NUMBER_PAGE = 1
 
-export function getFeedURLFor(category: Category, query?: FeedQuery): string {
+export function getFeedURLFor(category: Category, query?: FeedQuery): `/feed?${string}` {
 	const params = new URLSearchParams()
 	params.set("category", category)
 	if (query?.tag) params.set("tag", query.tag)
