@@ -24,6 +24,9 @@ export default {
 		appbar: {
 			ariaLabelBack: "Go back to home.",
 		},
+		dataChips: {
+			tag: { ariaLabelRemove: "Remove this tag." },
+		},
 	},
 	landing: {
 		meta: {
@@ -41,10 +44,12 @@ export default {
 				"You can view the feed of today's projects for the selected category. You can also use filter function to query using tags.",
 		},
 		previewCard: { altCoverSuffix: "cover image.", ariaPreviewAction: "Go to this project's project page." },
+		copyNoProject: "It seems that there are no projects! Try changing your tag query, or select another category.",
 		nav: {
 			labelPrevPage: "Go to the previous page of projects.",
 			labelNextPage: "Go to the next page of projects.",
 		},
+		ariaLabelQueryTrigger: "Click this button to open the query menu.",
 		modalQuery: {
 			title: "Filter projects",
 			categorySelect: {
@@ -54,6 +59,8 @@ export default {
 			},
 			query: {
 				copy: ctsr`You can search and filter projects using a tag, feature, or platform.`,
+				labelEmptyQuery: "Couldn't find any matching results.",
+				placeholder: "Search for a #tag.",
 			},
 			actions: {
 				labelApply: "Apply filters",

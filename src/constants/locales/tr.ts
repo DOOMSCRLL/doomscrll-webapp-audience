@@ -25,6 +25,9 @@ export default {
 		appbar: {
 			ariaLabelBack: "Ana sayfaya dön.",
 		},
+		dataChips: {
+			tag: { ariaLabelRemove: "Bu etiketi sil." },
+		},
 	},
 	landing: {
 		meta: {
@@ -41,10 +44,13 @@ export default {
 				"Bu sayfada, bugünün seçilen kategoriye ait projelerini keşfedebilirsin. Ayrıca etiketleri kullanarak arama da yapabilirsin.",
 		},
 		previewCard: { altCoverSuffix: "kapak fotoğrafı.", ariaPreviewAction: "Bu projenin proje sayfasına git." },
+		copyNoProject:
+			"Görünüşe göre burada hiçbir proje yok! Lütfen arama etiketini değiştirmeyi ya da başka bir kategori seçmeyi dene.",
 		nav: {
 			labelPrevPage: "Önceki projeleri gör.",
 			labelNextPage: "Sonraki projeleri gör.",
 		},
+		ariaLabelQueryTrigger: "Arama menüsüne ulaşmak için bu düğmeye tıkla.",
 		modalQuery: {
 			title: "Projeleri süz",
 			categorySelect: {
@@ -54,6 +60,8 @@ export default {
 			},
 			query: {
 				copy: ctsr`Projeleri, bir etiket, özellik ya da platform yazarak arayabilir ve süzebilirsin.`,
+				labelEmptyQuery: "Hiç eşleşen sonuç bulunamadı.",
+				placeholder: "Bir #etiket ara.",
 			},
 			actions: {
 				labelApply: "Süzgeçleri ekle",
