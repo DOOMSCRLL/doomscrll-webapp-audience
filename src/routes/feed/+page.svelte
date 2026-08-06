@@ -65,12 +65,27 @@
 	}
 	// #endregion
 
-	// #region Category Management
+	// #region Query Management
 	let isQueryModalOpen = $state(false)
 	function handleQueryModalOpen() {
 		isQueryModalOpen = true
 	}
-	//let selectedCategory = $state(untrack(() => data.selectedCategory))
+
+	function handleQuerySubmit(query: FeedQuery) {
+		const category = query.category ?? data.selectedCategory
+		const isFiltering = query.tag !== undefined
+		const url = getFeedURLFor(category as Category, {
+			...query,
+			page: 1,
+			batchSize: isFiltering ? 40 : undefined,
+		})
+		goto(resolve(url), { keepFocus: true })
+	}
+
+	function removeTagQuery() {
+		const url = getFeedURLFor(data.selectedCategory as Category, { page: 1 })
+		goto(resolve(url))
+	}
 	// #endregion
 </script>
 
