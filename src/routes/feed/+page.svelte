@@ -51,7 +51,10 @@
 	// #endregion
 
 	// #region Category Management
-	let queryModalTrigger = $state<HTMLButtonElement>()
+	let isQueryModalOpen = $state(false)
+	function handleQueryModalOpen() {
+		isQueryModalOpen = true
+	}
 	//let selectedCategory = $state(untrack(() => data.selectedCategory))
 	// #endregion
 </script>
@@ -76,9 +79,13 @@
 			"[&>button]:justify-self-end",
 		]}>
 		<PageNav {currentPage} {countPages} {prevHref} {nextHref} />
-		<SlabButton variant="filled" fit="square" ariaLabel="MISSING_ARIA_LABEL" bind:reference={queryModalTrigger}
-			><Icon icon="Settings" /></SlabButton>
+		<SlabButton variant="filled" fit="square" ariaLabel="MISSING_ARIA_LABEL" onClick={handleQueryModalOpen}>
+			<Icon icon="Settings" />
+		</SlabButton>
 	</section>
 </main>
 
-<QueryModal bind:trigger={queryModalTrigger} />
+<QueryModal
+	currentCategory={data.selectedCategory}
+	availableCategories={data.projectCounts}
+	bind:isOpen={isQueryModalOpen} />
