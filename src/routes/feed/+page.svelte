@@ -107,7 +107,7 @@
 	<section class="relative flex flex-col gap-10 overflow-x-hidden overflow-y-auto px-6 pt-6" bind:this={feedContainer}>
 		{#each data.previews as preview, itr (preview.referenceId)}
 			<PreviewCard {preview} />
-			{#if itr < data.previews.length - 1}<hr class="w-full border border-inverse" />{/if}
+			{#if itr < data.previews.length - 1}<hr />{/if}
 		{:else}
 			<div class="flex h-full w-full items-center justify-center">
 				<p class="font-serif text-2xl tracking-tight">{dict.copyNoProject}</p>

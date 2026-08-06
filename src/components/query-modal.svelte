@@ -80,10 +80,10 @@
 		]}
 		selectedValue={selectedCategory}
 		onChange={handleCategorySelect} />
-	<hr class="w-full border border-inverse" />
+	<hr />
 	<p class="font-serif text-2xl font-medium text-inverse">{dict.query.copy}</p>
 	<TagQueryInput {availableTags} bind:selectedTag />
-	<hr class="w-full border border-inverse" />
+	<hr />
 	<SlabButton variant="filled" isDisabled={!hasQueryChanged} onClick={handleQuerySubmit}>
 		<Icon icon="Filter" />
 		{dict.actions.labelApply}

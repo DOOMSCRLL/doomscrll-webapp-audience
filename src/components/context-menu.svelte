@@ -17,7 +17,7 @@
 </SlabButton>
 <Popover horizontalAlignment="right" verticalAlignment="bottom" doManageTrigger={true} bind:trigger>
 	<LanguageSelector label={dict.ariaLabelLangSelect} />
-	<hr class="w-full border-inverse" />
+	<hr />
 	<SlabAnchorExternal href="mailto:hello@doomscrll.com" variant="text" fit="max">
 		{dict.labelContact}
 		<Icon icon="ArrowForward" />
