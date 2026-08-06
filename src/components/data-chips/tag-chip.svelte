@@ -15,19 +15,24 @@
 
 	const { tag, isRemoveable = false, onRemove }: Props = $props()
 	const removeLabel = $derived(getDictionaryOf(LocaleContext.context.value!).common.dataChips.tag.ariaLabelRemove)
-	// TODO: Tweak coloring, size and generator.
 </script>
 
 <div class="group flex w-min items-center">
-	<div class="rounded-full px-4 py-2" style="background-color: {hslStrToCss(generateColorFrom(tag))}">
-		<p class="font-serif text-xl font-bold whitespace-nowrap text-obverse group-even:italic">
+	<div class="rounded-full px-2" style="background-color: {hslStrToCss(generateColorFrom(tag))}">
+		<p class="font-serif font-bold whitespace-nowrap text-obverse group-even:italic">
 			{tag}
 		</p>
 	</div>
 
 	{#if isRemoveable && onRemove}
-		<SlabButton ariaLabel={removeLabel} variant="text" hasAccent={true} fit="square" onClick={() => onRemove(tag)}>
-			<Icon icon="Cancel" />
+		<SlabButton
+			ariaLabel={removeLabel}
+			variant="text"
+			hasAccent={true}
+			fit="square"
+			size="small"
+			onClick={() => onRemove(tag)}>
+			<Icon icon="Cancel" size="small" />
 		</SlabButton>
 	{/if}
 </div>
