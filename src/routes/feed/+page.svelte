@@ -85,6 +85,10 @@
 		{#each data.previews as preview, itr (preview.referenceId)}
 			<PreviewCard {preview} />
 			{#if itr < data.previews.length - 1}<hr class="w-full border border-inverse" />{/if}
+		{:else}
+			<div class="flex h-full w-full items-center justify-center">
+				<p class="font-serif text-2xl tracking-tight">{dict.copyNoProject}</p>
+			</div>
 		{/each}
 	</section>
 	<section
