@@ -105,7 +105,7 @@
 <section class="flex h-min w-full flex-col items-center gap-4">
 	{#if !selectedTag}
 		<section class="flex w-full gap-2 [&>span]:text-inverse">
-			<Icon icon="Settings" />
+			<Icon icon="Search" />
 			<input
 				type="text"
 				role="combobox"

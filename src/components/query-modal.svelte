@@ -85,7 +85,7 @@
 	<TagQueryInput {availableTags} bind:selectedTag />
 	<hr class="w-full border border-inverse" />
 	<SlabButton variant="filled" isDisabled={!hasQueryChanged} onClick={handleQuerySubmit}>
-		<Icon icon="Settings" />
+		<Icon icon="Filter" />
 		{dict.actions.labelApply}
 	</SlabButton>
 	<SlabButton variant="text" onClick={handleClose}>

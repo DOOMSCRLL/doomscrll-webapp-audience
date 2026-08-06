@@ -127,7 +127,7 @@
 		]}>
 		<PageNav {currentPage} {countPages} {prevHref} {nextHref} />
 		<SlabButton variant="filled" fit="square" ariaLabel={dict.ariaLabelQueryTrigger} onClick={handleQueryModalOpen}>
-			<Icon icon="Settings" />
+			<Icon icon="Filter" />
 		</SlabButton>
 	</section>
 </main>
