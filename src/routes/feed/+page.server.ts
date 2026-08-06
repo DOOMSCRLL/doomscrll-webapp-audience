@@ -34,7 +34,7 @@ export const load: PageServerLoad = async ({ fetch, url, parent }) => {
 		redirect(307, targetUrl)
 	}
 
-	const previews = await getProjectFeed(
+	const { previews, queryCount } = await getProjectFeed(
 		{
 			category,
 			tag,
@@ -47,6 +47,7 @@ export const load: PageServerLoad = async ({ fetch, url, parent }) => {
 
 	return {
 		previews,
+		queryCount,
 		selectedCategory: category,
 		totalProjectCount,
 		page,

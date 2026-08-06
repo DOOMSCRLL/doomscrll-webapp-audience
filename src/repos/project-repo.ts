@@ -40,7 +40,10 @@ export async function getProjectCountsFor(
 		}))
 }
 
-export async function getProjectFeed(query?: FeedQuery, customFetch: typeof fetch = fetch): Promise<ProjectPreview[]> {
+export async function getProjectFeed(
+	query?: FeedQuery,
+	customFetch: typeof fetch = fetch,
+): Promise<{ previews: ProjectPreview[]; queryCount?: number }> {
 	const params = new URLSearchParams()
 	if (query?.category) params.set("category", query.category)
 	if (query?.tag) params.set("tag", query.tag)
@@ -62,19 +65,22 @@ export async function getProjectFeed(query?: FeedQuery, customFetch: typeof fetc
 		creator: { username: string }
 	}
 
-	const result = (await response.json()) as APIResponse<FeedResponseItem[]>
+	const result = (await response.json()) as APIResponse<FeedResponseItem[]> & { queryCount?: number }
 	if (!result.success) {
 		throw error(400, { message: result.error.message })
 	}
 
-	return result.data.map((item) => ({
-		referenceId: item.referenceId,
-		name: item.name,
-		authorUsername: item.creator.username,
-		category: item.category,
-		tags: item.tags ?? [],
-		coverImagePath: item.coverImagePath,
-	}))
+	return {
+		previews: result.data.map((item) => ({
+			referenceId: item.referenceId,
+			name: item.name,
+			authorUsername: item.creator.username,
+			category: item.category,
+			tags: item.tags ?? [],
+			coverImagePath: item.coverImagePath,
+		})),
+		queryCount: result.queryCount,
+	}
 }
 
 export async function getProjectByReference(
