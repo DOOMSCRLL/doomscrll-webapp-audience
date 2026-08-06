@@ -16,8 +16,10 @@
 
 	type Props = {
 		name: string
+		label: string
 		placeholder: string
 		emptyQueryLabel: string
+		layout?: "row" | "column"
 		options: OptGroupData[]
 		isDisabled?: boolean
 		selectedValue?: string
@@ -26,8 +28,10 @@
 
 	let {
 		name,
+		label,
 		placeholder,
 		emptyQueryLabel,
+		layout = "column",
 		options,
 		isDisabled = false,
 		selectedValue = $bindable(),
@@ -138,28 +142,14 @@
 <section class="flex h-min w-full flex-col items-start gap-4">
 	<input type="hidden" {name} bind:value={selectedValue} />
 
-	<SlabButton
-		variant="outlined"
-		alignment="right"
-		fit="max"
-		{isDisabled}
-		onClick={handleTriggerOnClick}
-		bind:reference={trigger}>
-		{triggerLabel}
-		<Icon icon="ArrowDropdown" size="small" />
-	</SlabButton>
-	<!--
 	<section
 		class="flex w-full {layout === 'column' ? 'flex-col items-start gap-4' : 'flex-row items-center gap-10'}"
 		aria-describedby="{name}-label">
-		<div class="flex justify-center gap-2">
-			<Icon icon="Starmark" size="small" />
-			<p
-				id="{name}-label"
-				class="cursor-text font-serif text-2xl font-medium tracking-tighter whitespace-nowrap text-inverse">
-				{label}:
-			</p>
-		</div>
+		<p
+			id="{name}-label"
+			class="cursor-text font-serif text-2xl font-medium tracking-tighter whitespace-nowrap text-inverse">
+			{label}:
+		</p>
 
 		<SlabButton
 			variant="outlined"
@@ -171,7 +161,7 @@
 			{triggerLabel}
 			<Icon icon="ArrowDropdown" size="small" />
 		</SlabButton>
-	</section>-->
+	</section>
 
 	{#if isOpen}
 		<Popover
