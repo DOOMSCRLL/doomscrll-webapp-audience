@@ -12,12 +12,15 @@ import Cancel from "./icon-cancel.svelte"
 import Copy from "./icon-copy.svelte"
 import DoomeyeClosed from "./icon-doomeye-closed.svelte"
 import Doomeye from "./icon-doomeye.svelte"
+import Filter from "./icon-filter.svelte"
 import Hamburger from "./icon-hamburger.svelte"
 import Help from "./icon-help.svelte"
+import Home from "./icon-home.svelte"
 import Link from "./icon-link.svelte"
 import Mail from "./icon-mail.svelte"
 import Purchase from "./icon-purchase.svelte"
 import Remove from "./icon-remove.svelte"
+import Search from "./icon-search.svelte"
 import Settings from "./icon-settings.svelte"
 import Starmark from "./icon-starmark.svelte"
 import Upload from "./icon-upload.svelte"
@@ -34,12 +37,15 @@ const ICONS = {
 	Copy,
 	DoomeyeClosed,
 	Doomeye,
+	Filter,
 	Hamburger,
 	Help,
+	Home,
 	Link,
 	Mail,
 	Purchase,
 	Remove,
+	Search,
 	Settings,
 	Starmark,
 	Upload,
