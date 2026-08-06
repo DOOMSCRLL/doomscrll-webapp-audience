@@ -105,6 +105,8 @@
 </main>
 
 <QueryModal
-	currentCategory={data.selectedCategory}
 	availableCategories={data.projectCounts}
+	currentCategory={data.selectedCategory}
+	currentTag={data.tag as ProjectTag}
+	onQuerySubmit={handleQuerySubmit}
 	bind:isOpen={isQueryModalOpen} />
