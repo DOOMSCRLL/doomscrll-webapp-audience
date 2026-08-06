@@ -81,7 +81,7 @@
 
 <main class="flex h-screen w-full flex-col justify-between overflow-hidden supports-[height:100dvh]:h-dvh">
 	<AppNavbar />
-	<section class="flex flex-col gap-10 overflow-x-hidden overflow-y-auto px-6 pt-6" bind:this={feedContainer}>
+	<section class="relative flex flex-col gap-10 overflow-x-hidden overflow-y-auto px-6 pt-6" bind:this={feedContainer}>
 		{#each data.previews as preview, itr (preview.referenceId)}
 			<PreviewCard {preview} />
 			{#if itr < data.previews.length - 1}<hr class="w-full border border-inverse" />{/if}
