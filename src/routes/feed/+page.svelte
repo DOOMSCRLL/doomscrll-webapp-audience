@@ -1,17 +1,25 @@
 <script lang="ts">
+	// #region Imports
+	import { afterNavigate, goto } from "$app/navigation"
+	import { resolve } from "$app/paths"
 	import type { PageData, Snapshot } from "./$types"
 
 	import { LocaleContext } from "contexts/shared.svelte"
+	import type Category from "models/category"
+	import type ProjectTag from "models/project-tag"
 	import { getCategoryLabelFor } from "repos/category-repo"
 	import { getDictionaryOf } from "repos/locale-repo"
+	import type { FeedQuery } from "repos/project-repo"
+	import { getFeedURLFor } from "utils/project-feed-utils"
 
-	import { afterNavigate } from "$app/navigation"
 	import AppNavbar from "comps/app-navbar.svelte"
 	import SlabButton from "comps/buttons/slab-button.svelte"
+	import TagChip from "comps/data-chips/tag-chip.svelte"
 	import Icon from "comps/icons/icon.svelte"
 	import PageNav from "comps/page-nav.svelte"
 	import PreviewCard from "comps/preview-card.svelte"
 	import QueryModal from "comps/query-modal.svelte"
+	// #endregion
 
 	type Props = {
 		data: PageData
