@@ -23,14 +23,29 @@
 
 	// #region Page management
 	let currentPage = $derived(data.page)
-	let countPages = $derived(Math.ceil(data.totalProjectCount / data.batchSize))
-
-	type FeedHref = `/feed?category=${string}&page=${number}`
-	const prevHref = $derived<FeedHref | undefined>(
-		currentPage <= 1 ? undefined : `/feed?category=${data.selectedCategory}&page=${currentPage - 1}`,
+	let countPages = $derived(
+		data.queryCount !== undefined
+			? Math.max(1, Math.ceil(data.queryCount / data.batchSize))
+			: Math.max(1, Math.ceil(data.totalProjectCount / data.batchSize)),
 	)
-	const nextHref = $derived<FeedHref | undefined>(
-		currentPage >= countPages ? undefined : `/feed?category=${data.selectedCategory}&page=${currentPage + 1}`,
+
+	const prevHref = $derived(
+		currentPage <= 1
+			? undefined
+			: getFeedURLFor(data.selectedCategory as Category, {
+					tag: data.tag,
+					batchSize: data.batchSize,
+					page: currentPage - 1,
+				}),
+	)
+	const nextHref = $derived(
+		currentPage >= countPages
+			? undefined
+			: getFeedURLFor(data.selectedCategory as Category, {
+					tag: data.tag,
+					batchSize: data.batchSize,
+					page: currentPage + 1,
+				}),
 	)
 	// #endregion
 
