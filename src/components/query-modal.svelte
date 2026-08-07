@@ -8,8 +8,8 @@
 	import { getCategoryLabelFor, isCategory } from "repos/category-repo"
 	import { getDictionaryOf } from "repos/locale-repo"
 	import type { FeedQuery } from "repos/project-repo"
-
 	import { getTagsFor } from "repos/tag-repo"
+
 	import SlabButton from "./buttons/slab-button.svelte"
 	import DDropdown from "./d-dropdown/d-dropdown.svelte"
 	import Icon from "./icons/icon.svelte"
@@ -26,7 +26,8 @@
 
 	let { currentCategory, availableCategories, currentTag, isOpen = $bindable(false), onQuerySubmit }: Props = $props()
 
-	const dict = $derived(getDictionaryOf(LocaleContext.context.value!).feed.modalQuery)
+	const locale = $derived(LocaleContext.context.value!)
+	const dict = $derived(getDictionaryOf(locale).feed.modalQuery)
 
 	let selectedCategory = $state<Category>(untrack(() => currentCategory))
 	const availableTags = $derived<ProjectTag[]>(getTagsFor(selectedCategory))
@@ -74,7 +75,7 @@
 			{
 				opts: availableCategories.map((c) => ({
 					value: c.category,
-					label: `${getCategoryLabelFor(c.category)} (${c.count})`,
+					label: `${getCategoryLabelFor(c.category, locale)} (${c.count})`,
 				})),
 			},
 		]}

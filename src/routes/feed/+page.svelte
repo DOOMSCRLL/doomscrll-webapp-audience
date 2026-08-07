@@ -27,7 +27,8 @@
 
 	const { data }: Props = $props()
 
-	const dict = $derived(getDictionaryOf(LocaleContext.context.value!).feed)
+	const locale = LocaleContext.context.value!
+	const dict = $derived(getDictionaryOf(locale).feed)
 
 	// #region Page management
 	let currentPage = $derived(data.page)
@@ -98,7 +99,7 @@
 </script>
 
 <svelte:head>
-	<title>{getCategoryLabelFor(data.selectedCategory)} {dict.meta.title}</title>
+	<title>{getCategoryLabelFor(data.selectedCategory, locale)} {dict.meta.title}</title>
 	<meta name="description" content={dict.meta.description} />
 </svelte:head>
 
