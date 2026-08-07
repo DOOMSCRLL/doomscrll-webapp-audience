@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ProjectPreview } from "models/project"
-
 	import { LocaleContext } from "contexts/shared.svelte"
+	import type { ProjectPreview } from "models/project"
 	import { getDictionaryOf } from "repos/locale-repo"
+
 	import SlabAnchor from "./buttons/slab-anchor.svelte"
 	import TagChip from "./data-chips/tag-chip.svelte"
 	import Icon from "./icons/icon.svelte"
