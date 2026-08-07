@@ -24,9 +24,9 @@
 		<Icon icon="ArrowBack" />
 	</SlabAnchor>
 	<section class="flex h-min w-full flex-col items-center">
-		<p class="w-full overflow-hidden text-center font-serif text-2xl font-medium text-wrap text-ellipsis text-inverse">
+		<h1 class="w-full overflow-hidden text-center font-serif text-2xl font-medium text-wrap text-ellipsis text-inverse">
 			{projectName}
-		</p>
+		</h1>
 		<p class="font-mono text-sm font-bold tracking-wide text-inverse">@{authorHandle}</p>
 	</section>
 </nav>
