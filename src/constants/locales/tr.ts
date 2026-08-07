@@ -89,7 +89,13 @@ export default {
 		details: {
 			trailer: {
 				label: "Tanıtım",
+				titleSuffix: "tanıtım videosu.",
 				ariaLabelVideo: "YouTube'dan projenin tanıtım videosunu izlemek için önizlemeye tıklayın.",
+				altThumbnailSuffix: "projesinin tanıtım videosu.",
+				cta: {
+					leading: "Tanıtımı",
+					trailing: "izle",
+				},
 			},
 			labelCategory: "Kategori",
 			labelTags: "Etiketler",

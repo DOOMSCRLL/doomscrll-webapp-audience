@@ -88,7 +88,13 @@ export default {
 		details: {
 			trailer: {
 				label: "Trailer",
+				titleSuffix: "'s trailer",
 				ariaLabelVideo: "Click this preview to watch project's trailer video on YouTube.",
+				altThumbnailSuffix: "project's trailer preview",
+				cta: {
+					leading: "Watch",
+					trailing: "trailer",
+				},
 			},
 			labelCategory: "Category",
 			labelTags: "Tags",
