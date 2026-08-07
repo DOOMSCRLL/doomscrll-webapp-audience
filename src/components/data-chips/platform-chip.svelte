@@ -30,7 +30,7 @@
 	rel="noopener noreferrer"
 	aria-label={ariaLabel}
 	class={[
-		"group h-12 w-full rounded-2xl px-6",
+		"group h-12 w-full rounded-2xl px-2",
 		"grid grid-cols-[auto_1fr_auto] items-center gap-4",
 		"bg-obverse hover:bg-inverse active:bg-accent",
 		"overflow-hidden font-serif text-2xl font-medium text-ellipsis whitespace-nowrap",
