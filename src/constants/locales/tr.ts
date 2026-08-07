@@ -27,6 +27,14 @@ export default {
 		},
 		dataChips: {
 			tag: { ariaLabelRemove: "Bu etiketi sil." },
+			feature: { ariaLabelRemove: "Bu özelliği sil." },
+			platform: {
+				ariaLabelRemove: "Bu platformu sil.",
+				ariaLabelVisit: {
+					prefix: "Projenin",
+					suffixPlatform: "sayfasını ziyaret et.",
+				},
+			},
 		},
 	},
 	landing: {
@@ -77,6 +85,23 @@ export default {
 		header: {
 			altCoverImgSuffix: "projesinin kapak fotoğrafı.",
 			ariaLabelBackAction: "Proje akışına geri dön.",
+		},
+		details: {
+			trailer: {
+				label: "Tanıtım",
+				ariaLabelVideo: "YouTube'dan projenin tanıtım videosunu izlemek için önizlemeye tıklayın.",
+			},
+			labelCategory: "Kategori",
+			labelTags: "Etiketler",
+			screenshots: {
+				label: "Ekran Görüntüleri",
+				altSuffix: "projesinin ekran görüntüsü.",
+			},
+			labelFeats: "Özellikler",
+			platforms: {
+				label: "Platformlar",
+				ariaLabelAnchorSuffix: "üzerinde ki proje sayfasına bağlantı.",
+			},
 		},
 	},
 	errorPage: {

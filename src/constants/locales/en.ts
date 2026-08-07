@@ -26,6 +26,14 @@ export default {
 		},
 		dataChips: {
 			tag: { ariaLabelRemove: "Remove this tag." },
+			feature: { ariaLabelRemove: "Remove this feature." },
+			platform: {
+				ariaLabelRemove: "Remove this platform.",
+				ariaLabelVisit: {
+					prefix: "Visit project's",
+					suffixPlatform: "page.",
+				},
+			},
 		},
 	},
 	landing: {
@@ -76,6 +84,23 @@ export default {
 		header: {
 			altCoverImgSuffix: "project's cover image.",
 			ariaLabelBackAction: "Return to the feed.",
+		},
+		details: {
+			trailer: {
+				label: "Trailer",
+				ariaLabelVideo: "Click this preview to watch project's trailer video on YouTube.",
+			},
+			labelCategory: "Category",
+			labelTags: "Tags",
+			screenshots: {
+				label: "Screenshots",
+				altSuffix: "project's screenshot",
+			},
+			labelFeats: "Features",
+			platforms: {
+				label: "Platforms",
+				ariaLabelAnchorSuffix: "link to the project's page.",
+			},
 		},
 	},
 	errorPage: {
