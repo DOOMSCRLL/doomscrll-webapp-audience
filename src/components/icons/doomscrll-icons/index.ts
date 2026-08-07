@@ -18,6 +18,7 @@ import Help from "./icon-help.svelte"
 import Home from "./icon-home.svelte"
 import Link from "./icon-link.svelte"
 import Mail from "./icon-mail.svelte"
+import Play from "./icon-play.svelte"
 import Purchase from "./icon-purchase.svelte"
 import Remove from "./icon-remove.svelte"
 import Search from "./icon-search.svelte"
@@ -43,6 +44,7 @@ const ICONS = {
 	Home,
 	Link,
 	Mail,
+	Play,
 	Purchase,
 	Remove,
 	Search,
