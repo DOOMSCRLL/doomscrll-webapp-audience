@@ -10,7 +10,7 @@ type ValidatedYoutubeURL =
 			videoId: string
 	  }
 
-function validateYoutubeURL(url: string): ValidatedYoutubeURL {
+export function validateYoutubeURL(url: string): ValidatedYoutubeURL {
 	const match = url.match(REGEX_URL_YOUTUBE)
 
 	if (!match) return { isValid: false }
