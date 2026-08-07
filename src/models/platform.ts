@@ -4,8 +4,6 @@ export type PlatformName = keyof typeof PLATFORMS
 
 type Platform = {
 	name: string
-	slug: string
-	icon?: string
 	isBadge?: boolean
 }
 

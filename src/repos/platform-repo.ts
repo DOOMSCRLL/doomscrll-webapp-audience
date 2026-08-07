@@ -9,18 +9,6 @@ export function getPlatformName(platform: PlatformName): string {
 	return PLATFORMS[platform].name
 }
 
-export function getPlatformSlug(platform: PlatformName): string {
-	return PLATFORMS[platform].slug
-}
-
-const LOOKUP_MAP_PLATFORM_SLUG_TO_KEY = Object.freeze(
-	Object.fromEntries(Object.entries(PLATFORMS).map(([key, p]) => [p.slug, key])),
-)
-export function slugToPlatformName(slug?: string): PlatformName | undefined {
-	if (!slug) return undefined
-	return LOOKUP_MAP_PLATFORM_SLUG_TO_KEY[slug] as PlatformName
-}
-
 // #region Platform icons helper
 const BUNDLED_LOGO_PLATFORMS = new Set<PlatformName>([
 	"appStore",
@@ -41,17 +29,16 @@ type AssetPath = {
 }
 
 export function getPlatformIconPathFor(platform: PlatformName): AssetPath {
-	const slug = getPlatformSlug(platform)
 	const isBadge = (PLATFORMS[platform] as Platform).isBadge ?? false
 
 	let path: string
 	let isLocal: boolean
 
 	if (BUNDLED_LOGO_PLATFORMS.has(platform)) {
-		path = `${PATH_PREFIX_LOCAL}logo-${slug}.${platform === "spotify" ? "webp" : "svg"}`
+		path = `${PATH_PREFIX_LOCAL}logo-${platform}.${platform === "spotify" ? "webp" : "svg"}`
 		isLocal = true
 	} else {
-		path = `${PUBLIC_CDN_STATIC_BASE_URL}logo-${slug}`
+		path = `${PUBLIC_CDN_STATIC_BASE_URL}logo-${platform}`
 		isLocal = false
 	}
 
