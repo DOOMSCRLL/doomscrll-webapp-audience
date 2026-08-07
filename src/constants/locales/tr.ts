@@ -69,6 +69,16 @@ export default {
 			},
 		},
 	},
+	project: {
+		meta: {
+			titleSuffix: "Projesi | DOOMSCRLL",
+			description: "Bu sayfadan seçtiğin projenin ayrıntılarını görebilirsin.",
+		},
+		header: {
+			altCoverImgSuffix: "projesinin kapak fotoğrafı.",
+			ariaLabelBackAction: "Proje akışına geri dön.",
+		},
+	},
 	errorPage: {
 		header: "Aha, bir hata yakaladın!",
 		labelReturn: "Ana sayfaya dön",

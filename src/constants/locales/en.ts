@@ -68,6 +68,16 @@ export default {
 			},
 		},
 	},
+	project: {
+		meta: {
+			titleSuffix: "Project | DOOMSCRLL",
+			description: "You can explore the details of the selected project from this page.",
+		},
+		header: {
+			altCoverImgSuffix: "project's cover image.",
+			ariaLabelBackAction: "Return to the feed.",
+		},
+	},
 	errorPage: {
 		header: "Hey, you found an error!",
 		labelReturn: "Return home",
