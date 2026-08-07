@@ -1,40 +1,42 @@
 <script lang="ts">
-	import type { PlatformRecord } from "models/platform"
+	import type { PlatformName } from "models/platform"
 
-	import SlabAnchorExternal from "comps/buttons/slab-anchor-external.svelte"
-	import SlabButton from "comps/buttons/slab-button.svelte"
 	import ExternalIcon from "comps/icons/external-icon.svelte"
 	import Icon from "comps/icons/icon.svelte"
 	import { LocaleContext } from "contexts/shared.svelte"
 	import { getDictionaryOf } from "repos/locale-repo"
+	import { getPlatformName } from "repos/platform-repo"
 
 	type Props = {
-		platform: PlatformRecord
-		onRemove?: (platform: PlatformRecord) => void
+		platform: PlatformName
+		href: string
 	}
 
-	const { platform, onRemove }: Props = $props()
+	const { platform, href }: Props = $props()
 
-	const dict = $derived(getDictionaryOf(LocaleContext.context.value!).common.dataChips.platformChip)
-	const urlLabel = $derived(platform.url.replace(/((https|http)+:\/\/(www.)*)/g, "").trim())
+	const dict = $derived(getDictionaryOf(LocaleContext.context.value!).common.dataChips.platform)
+
+	const platformName = $derived(getPlatformName(platform))
+	const ariaLabel = $derived.by(() => {
+		const { prefix, suffixPlatform } = dict.ariaLabelVisit
+		return `${prefix} ${platformName} ${suffixPlatform}`
+	})
 </script>
 
-<li class="flex w-min items-center gap-4">
-	<ExternalIcon platform={platform.platform} />
-	<Icon icon="Starmark" size="small" />
-	<SlabAnchorExternal href={platform.url} variant="filled" alignment="center" fit="min">
-		<Icon icon="Link" />
-		<span class="w-full overflow-hidden text-ellipsis">{urlLabel}</span>
-		<Icon icon="ArrowExternal" />
-	</SlabAnchorExternal>
-	{#if onRemove}
-		<SlabButton
-			variant="text"
-			fit="square"
-			size="small"
-			ariaLabel={dict.labelRemove}
-			onClick={() => onRemove(platform)}>
-			<Icon icon="Remove" size="small" />
-		</SlabButton>
-	{/if}
-</li>
+<a
+	// eslint-disable-next-line svelte/no-navigation-without-resolve
+	{href}
+	target="_blank"
+	rel="noopener noreferrer"
+	aria-label={ariaLabel}
+	class={[
+		"group h-12 w-full rounded-2xl px-6",
+		"grid grid-cols-[auto_1fr_auto] items-center gap-4",
+		"bg-obverse hover:bg-inverse active:bg-accent",
+		"overflow-hidden font-serif text-2xl font-medium text-ellipsis whitespace-nowrap",
+		"text-inverse hover:text-obverse active:text-obverse",
+	]}>
+	<ExternalIcon {platform} />
+	@{platformName}
+	<Icon icon="ArrowExternal" />
+</a>
