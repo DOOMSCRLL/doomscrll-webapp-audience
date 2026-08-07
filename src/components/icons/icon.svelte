@@ -14,7 +14,7 @@
 	const IconToRender = $derived(getDoomscrllIcon(icon))
 </script>
 
-<span role="complementary" class="complementary">
+<span role="complementary" class="complementary h-fit w-fit">
 	<svg
 		viewBox="0 0 24 24"
 		fill="currentColor"
