@@ -6,6 +6,7 @@
 	import FeatureChip from "comps/data-chips/feature-chip.svelte"
 	import PlatformChip from "comps/data-chips/platform-chip.svelte"
 	import TagChip from "comps/data-chips/tag-chip.svelte"
+	import YoutubePlayer from "comps/youtube-player.svelte"
 	import { getCategoryLabelFor } from "repos/category-repo"
 
 	const { data } = $props()
@@ -24,7 +25,17 @@
 	<CoverImageHeader projectName={project.name} authorHandle={project.creator.username} src={project.coverImagePath!} />
 	<!-- Description -->
 	<p class="mx-6 font-serif text-2xl text-pretty text-inverse">{project.description}</p>
-	<!-- Trailer? -->
+	<!-- Trailer -->
+	{#if !project.videoUrl}
+		<section class="flex w-full flex-col gap-6">
+			<h2 class="ml-6 font-mono font-bold tracking-wide text-inverse uppercase underline">
+				{dict.details.trailer.label}
+			</h2>
+			<YoutubePlayer
+				url={project.videoUrl ?? "https://www.youtube.com/watch?v=VUwkKl7IL1w"}
+				projectName={project.name} />
+		</section>
+	{/if}
 	<!-- Category -->
 	<section class="grid w-full grid-cols-[minmax(0,1fr)_minmax(0,2fr)] px-6">
 		<h2 class="font-mono font-bold tracking-wide text-inverse uppercase underline">{dict.details.labelCategory}</h2>
@@ -52,8 +63,8 @@
 		</section>
 	{/if}
 	<!-- Platforms -->
-	<section class="flex w-full flex-col gap-6">
-		<h2 class="ml-6 font-mono font-bold tracking-wide text-inverse uppercase underline">
+	<section class="flex w-full flex-col gap-6 px-6">
+		<h2 class="font-mono font-bold tracking-wide text-inverse uppercase underline">
 			{dict.details.platforms.label}
 		</h2>
 		<PlatformChip href={project.primaryUrl} platform={project.primaryPlatform} />
