@@ -33,7 +33,8 @@
 	<meta name="description" content={dict.meta.description} />
 </svelte:head>
 
-<main class="flex h-screen w-full flex-col justify-between overflow-hidden supports-[height:100dvh]:h-dvh">
+<main
+	class="flex h-screen w-full flex-col justify-between overflow-hidden supports-[height:100dvh]:h-dvh md:items-center">
 	<DoomscrllWordmark />
 	<section class="flex w-full flex-col items-center gap-4">
 		<p class="font-mono text-xl tracking-wider uppercase">{fmt.getFullDate(today)}</p>
@@ -41,7 +42,7 @@
 	</section>
 	{#if data.projectCounts.length > 0}
 		<p class="mx-6 font-serif text-2xl font-medium tracking-wide text-inverse">{dict.copy}</p>
-		<ul class="flex w-full list-disc flex-col gap-2 pl-10">
+		<ul class="flex w-full list-disc flex-col gap-2 pl-10 md:w-min">
 			{#each data.projectCounts as item (item.category)}
 				<li>
 					<SlabAnchor href="/feed?category={item.category}" variant="text" fit="min" hasUnderline={true}>
@@ -54,8 +55,8 @@
 	{:else}
 		<p class="mx-6 font-serif text-2xl font-medium tracking-wide text-inverse">{dict.noProjectCopy}</p>
 	{/if}
-	<section class="grid w-full grid-cols-[1fr_auto_1fr] items-center justify-items-end px-6 [&>svg]:col-2">
-		<DoomscrllLogo size="large" />
+	<section class="grid w-full grid-cols-[1fr_auto_1fr] items-center justify-items-start px-6">
 		<ContextMenu />
+		<DoomscrllLogo size="large" />
 	</section>
 </main>
