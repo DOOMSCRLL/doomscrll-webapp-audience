@@ -67,9 +67,9 @@
 		</section>
 	{/if}
 	<!-- Category -->
-	<section class="grid w-full grid-cols-[minmax(0,1fr)_minmax(0,2fr)] px-6">
+	<section class="grid w-full grid-cols-[minmax(0,1fr)_minmax(0,2fr)] items-center px-6">
 		<h2 class="font-mono font-bold tracking-wide text-inverse uppercase underline">{dict.details.labelCategory}</h2>
-		<p class="font-serif font-medium italic">{getCategoryLabelFor(project.category, locale)}</p>
+		<p class="font-serif text-xl font-medium italic">{getCategoryLabelFor(project.category, locale)}</p>
 	</section>
 	<!-- Tags -->
 	<section class="grid w-full grid-cols-[minmax(0,1fr)_minmax(0,2fr)] px-6">
