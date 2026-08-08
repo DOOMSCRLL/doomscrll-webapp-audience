@@ -14,6 +14,7 @@
 
 	import AppNavbar from "comps/app-navbar.svelte"
 	import SlabButton from "comps/buttons/slab-button.svelte"
+	import ContextMenu from "comps/context-menu.svelte"
 	import TagChip from "comps/data-chips/tag-chip.svelte"
 	import Icon from "comps/icons/icon.svelte"
 	import PageNav from "comps/page-nav.svelte"
@@ -103,12 +104,18 @@
 	<meta name="description" content={dict.meta.description} />
 </svelte:head>
 
-<main class="flex h-screen w-full flex-col justify-between overflow-hidden supports-[height:100dvh]:h-dvh">
+<main
+	class="flex h-screen w-full flex-col justify-between overflow-hidden supports-[height:100dvh]:h-dvh md:items-center">
 	<AppNavbar />
-	<section class="relative flex flex-col gap-10 overflow-x-hidden overflow-y-auto px-6 pt-6" bind:this={feedContainer}>
+	<section
+		class={[
+			"relative flex flex-col gap-10 overflow-x-hidden overflow-y-auto px-6 pt-6",
+			"md:grid md:grid-cols-3 md:gap-20 md:px-16",
+		]}
+		bind:this={feedContainer}>
 		{#each data.previews as preview, itr (preview.referenceId)}
 			<PreviewCard {preview} />
-			{#if itr < data.previews.length - 1}<hr />{/if}
+			{#if itr < data.previews.length - 1}<hr class="md:hidden" />{/if}
 		{:else}
 			<div class="flex h-full w-full items-center justify-center">
 				<p class="font-serif text-2xl tracking-tight">{dict.copyNoProject}</p>
@@ -122,10 +129,10 @@
 	</section>
 	<section
 		class={[
-			"grid h-min w-full grid-cols-3 items-center justify-center bg-obverse px-4 py-2",
-			"[&>section]:col-2 [&>section]:justify-self-center",
-			"[&>button]:justify-self-end",
+			"grid h-min w-full grid-cols-3 items-center justify-items-start bg-obverse px-4 py-2",
+			"md:w-fit md:gap-4 [&>button]:last:justify-self-end [&>section]:justify-self-center",
 		]}>
+		<ContextMenu />
 		<PageNav {currentPage} {countPages} {prevHref} {nextHref} />
 		<SlabButton variant="filled" fit="square" ariaLabel={dict.ariaLabelQueryTrigger} onClick={handleQueryModalOpen}>
 			<Icon icon="Filter" />
