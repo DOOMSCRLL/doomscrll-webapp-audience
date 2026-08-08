@@ -39,7 +39,7 @@
 			type="button"
 			aria-label={dict.ariaLabelVideo}
 			onclick={handlePlay}
-			class="group relative aspect-video w-full cursor-pointer overflow-hidden rounded-2xl bg-obverse">
+			class="group relative isolate aspect-video w-full cursor-pointer overflow-hidden rounded-2xl bg-obverse">
 			<img
 				src={thumbnailUrl}
 				alt="{projectName} {dict.altThumbnailSuffix}"
