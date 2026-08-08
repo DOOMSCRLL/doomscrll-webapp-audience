@@ -102,12 +102,19 @@ export default {
 			screenshots: {
 				label: "Ekran Görüntüleri",
 				altSuffix: "projesinin ekran görüntüsü.",
+				labelPreviewAction: "Üzerine tıklayarak bu görüntüyü büyütebilirsin.",
 			},
 			labelFeats: "Özellikler",
 			platforms: {
 				label: "Platformlar",
 				ariaLabelAnchorSuffix: "üzerinde ki proje sayfasına bağlantı.",
 			},
+		},
+		previewModal: {
+			title:
+				"Seçili projenin ekran görüntüsünün genişletilmiş önizlemesi. Bu diyaloğu kapatmak için aşağıda ki düğmeye basabilirsin.",
+			altSuffix: "projesine ait ekran görüntüsünün tam ekran önizlemesi.",
+			labelClose: "Kapat",
 		},
 	},
 	errorPage: {

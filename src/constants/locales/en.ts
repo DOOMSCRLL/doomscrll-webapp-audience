@@ -101,12 +101,19 @@ export default {
 			screenshots: {
 				label: "Screenshots",
 				altSuffix: "project's screenshot",
+				labelPreviewAction: "Expand this screnshot by clicking on it.",
 			},
 			labelFeats: "Features",
 			platforms: {
 				label: "Platforms",
 				ariaLabelAnchorSuffix: "link to the project's page.",
 			},
+		},
+		previewModal: {
+			title:
+				"This is the full screen preview of the selected project's screenshot. You can close it using the button below.",
+			altSuffix: "project's screenshot in expanded view.",
+			labelClose: "Close",
 		},
 	},
 	errorPage: {
