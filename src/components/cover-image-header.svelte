@@ -19,7 +19,7 @@
 <header class="w-full">
 	<img {src} {alt} class="aspect-square h-auto w-full img-mask-ticket mask-contain mask-no-repeat object-cover" />
 </header>
-<nav class="justify-items-between sticky top-0 grid w-full grid-cols-[1fr_auto_1fr] items-center bg-obverse px-2">
+<nav class="justify-items-between sticky top-0 z-20 grid w-full grid-cols-[1fr_auto_1fr] items-center bg-obverse px-2">
 	<SlabAnchor href="/feed" variant="text" fit="square" ariaLabel={dict.ariaLabelBackAction}>
 		<Icon icon="ArrowBack" />
 	</SlabAnchor>

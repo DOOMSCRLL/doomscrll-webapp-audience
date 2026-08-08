@@ -28,7 +28,7 @@
 		role="tooltip"
 		id={tooltipId}
 		class={[
-			"fixed z-50 flex h-min w-fit max-w-40/100 flex-col items-start justify-center gap-2",
+			"fixed z-30 flex h-min w-fit max-w-40/100 flex-col items-start justify-center gap-2",
 			"rounded-3xl border-3 border-inverse bg-obverse p-4",
 			"pointer-events-none",
 			ttm(renderedAlignment, {

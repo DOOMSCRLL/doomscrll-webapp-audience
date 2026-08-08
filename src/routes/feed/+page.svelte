@@ -115,7 +115,7 @@
 			</div>
 		{/each}
 		{#if data.tag}
-			<div class="sticky bottom-0 z-10 ml-auto">
+			<div class="sticky bottom-0 z-20 ml-auto">
 				<TagChip tag={data.tag as ProjectTag} isRemoveable={true} onRemove={removeTagQuery} />
 			</div>
 		{/if}

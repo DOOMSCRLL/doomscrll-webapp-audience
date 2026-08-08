@@ -45,7 +45,7 @@
 				alt="{projectName} {dict.altThumbnailSuffix}"
 				class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
 			<div
-				class="absolute inset-0 flex items-center justify-center gap-4 bg-[black]/75 transition-colors group-hover:bg-[black]/40">
+				class="absolute inset-0 z-10 flex items-center justify-center gap-4 bg-[black]/75 transition-colors group-hover:bg-[black]/40">
 				<p class="font-mono text-2xl font-bold tracking-widest text-inverse uppercase">({dict.cta.leading}</p>
 				<Icon icon="Play" size="normal" />
 				<p class="font-mono text-2xl font-bold tracking-widest text-inverse uppercase">{dict.cta.trailing})</p>
