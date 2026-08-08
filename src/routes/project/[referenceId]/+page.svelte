@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { LocaleContext } from "contexts/shared.svelte"
+	import { getCategoryLabelFor } from "repos/category-repo"
 	import { getDictionaryOf } from "repos/locale-repo"
 
 	import CoverImageHeader from "comps/cover-image-header.svelte"
@@ -9,7 +10,6 @@
 	import ScreenshotCarousel from "comps/screenshot-carousel.svelte"
 	import ScreenshotPreviewModal from "comps/screenshot-preview-modal.svelte"
 	import YoutubePlayer from "comps/youtube-player.svelte"
-	import { getCategoryLabelFor } from "repos/category-repo"
 
 	const { data } = $props()
 
