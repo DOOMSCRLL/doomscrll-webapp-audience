@@ -110,7 +110,7 @@
 	<section
 		class={[
 			"relative flex flex-col gap-10 overflow-x-hidden overflow-y-auto px-6 pt-6",
-			"md:grid md:grid-cols-3 md:gap-20 md:px-16",
+			"md:grid md:grid-cols-3 md:gap-16 md:px-12 md:pt-12",
 		]}
 		bind:this={feedContainer}>
 		{#each data.previews as preview, itr (preview.referenceId)}
