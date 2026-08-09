@@ -51,7 +51,7 @@
 	<meta name="description" content={dict.meta.description} />
 </svelte:head>
 
-<main class="flex h-screen w-full flex-col gap-6 overflow-y-auto supports-[height:100dvh]:h-dvh">
+<main class="flex h-screen w-full flex-col gap-6 overflow-y-auto pb-6 supports-[height:100dvh]:h-dvh">
 	<CoverImageHeader projectName={project.name} authorHandle={project.creator.username} src={project.coverImagePath!} />
 	<!-- Description -->
 	<p class="mx-6 font-serif text-2xl text-pretty text-inverse">{project.description}</p>
