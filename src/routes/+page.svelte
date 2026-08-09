@@ -45,7 +45,12 @@
 		<ul class="flex w-full list-disc flex-col gap-2 pl-10 md:w-min">
 			{#each data.projectCounts as item (item.category)}
 				<li>
-					<SlabAnchor href="/feed?category={item.category}" variant="text" fit="min" hasUnderline={true}>
+					<SlabAnchor
+						href="/feed?category={item.category}"
+						variant="text"
+						alignment="right"
+						fit="min"
+						hasUnderline={true}>
 						{item.category} ({item.count})
 						<Icon icon="ArrowForward" size="small" />
 					</SlabAnchor>
