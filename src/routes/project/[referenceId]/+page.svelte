@@ -18,30 +18,11 @@
 	const dict = $derived(getDictionaryOf(locale).project)
 	const project = $derived(data.project)
 
-	// TODO: Remove all placeholders from the page!
-	const testScreenshots = [
-		"https://images.unsplash.com/photo-1604311795833-25e1d5c128c6",
-		"https://images.unsplash.com/photo-1616578492900-ea5a8fc6c341",
-		"https://images.unsplash.com/photo-1628105541664-ae6ee8d249ec",
-		"https://images.unsplash.com/photo-1584294311015-1bda86d6824d",
-		"https://images.unsplash.com/photo-1566490089793-103270a1b453",
-		"https://images.unsplash.com/photo-1693929268246-4ff4c6a45a77",
-		"https://images.unsplash.com/photo-1605505447721-1992c507c15e",
-		"https://images.unsplash.com/photo-1626288215937-747af7be5b7b",
-		"https://images.unsplash.com/photo-1563341932-d0f6b9fe7313",
-		"https://images.unsplash.com/photo-1605743368663-3a895911ee42",
-		"https://images.unsplash.com/photo-1714315994160-9b861705f898",
-		"https://images.unsplash.com/photo-1603704602422-ced8c1aa1c9f",
-		"https://images.unsplash.com/photo-1560761716-ec8eb63ea39c",
-		"https://images.unsplash.com/photo-1663094304011-8bbb52e85bd1",
-		"https://images.unsplash.com/photo-1635987580232-0d2ee1579849",
-	]
 	let expandedScreenshotUrl = $state<string>()
 	function handleScreenshotExpand(index: number) {
-		expandedScreenshotUrl = testScreenshots[index]
-		//expandedPreviewUrl = project.screenshotPaths[index]
+		if (!project.screenshotPaths || project.screenshotPaths.length <= 0) return
+		expandedScreenshotUrl = project.screenshotPaths[index]
 	}
-
 	function handlePreviewClose() {
 		expandedScreenshotUrl = undefined
 	}
@@ -70,14 +51,12 @@
 		<!-- Description -->
 		<p class="mx-6 font-serif text-2xl text-pretty text-inverse">{project.description}</p>
 		<!-- Trailer -->
-		{#if !project.videoUrl}
+		{#if project.videoUrl}
 			<section class="flex w-full flex-col gap-6">
 				<h2 class="ml-6 font-mono font-bold tracking-wide text-inverse uppercase underline">
 					{dict.details.trailer.label}
 				</h2>
-				<YoutubePlayer
-					url={project.videoUrl ?? "https://www.youtube.com/watch?v=VUwkKl7IL1w"}
-					projectName={project.name} />
+				<YoutubePlayer url={project.videoUrl} projectName={project.name} />
 			</section>
 		{/if}
 		<!-- Category -->
@@ -95,15 +74,17 @@
 			</div>
 		</section>
 		<!-- Screenshots -->
-		<section class="flex w-full flex-col gap-6">
-			<h2 class="ml-6 font-mono font-bold tracking-wide text-inverse uppercase underline">
-				{dict.details.screenshots.label}
-			</h2>
-			<ScreenshotCarousel
-				srcs={/*project.screenshotPaths ?? */ testScreenshots}
-				projectName={project.name}
-				onPreviewClick={handleScreenshotExpand} />
-		</section>
+		{#if project.screenshotPaths}
+			<section class="flex w-full flex-col gap-6">
+				<h2 class="ml-6 font-mono font-bold tracking-wide text-inverse uppercase underline">
+					{dict.details.screenshots.label}
+				</h2>
+				<ScreenshotCarousel
+					srcs={project.screenshotPaths}
+					projectName={project.name}
+					onPreviewClick={handleScreenshotExpand} />
+			</section>
+		{/if}
 		<!-- Features -->
 		{#if project.features}
 			<section class="grid w-full grid-cols-[minmax(0,1fr)_minmax(0,2fr)] px-6">
