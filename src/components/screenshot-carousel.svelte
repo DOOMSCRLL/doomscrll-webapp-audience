@@ -37,7 +37,7 @@
 	</button>
 {/snippet}
 
-<section class="mask-fade-x flex pretty-scrollbar items-center justify-start gap-4 overflow-x-auto px-6">
+<section class="flex pretty-scrollbar items-center justify-start gap-4 overflow-x-auto mask-fade-x px-6">
 	{#each srcs as src, i (src)}
 		{@render preview(src, i)}
 	{/each}
