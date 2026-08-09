@@ -24,7 +24,7 @@
 	}
 </script>
 
-<div aria-labelledby="EXTERNAL_ICON_{platform}" class="overflow-hidden rounded-xl bg-[black] p-2">
+<div aria-labelledby="EXTERNAL_ICON_{platform}" class="overflow-hidden rounded-xl bg-[#0a0a0a] p-2">
 	<img
 		alt={iconAlt}
 		id="EXTERNAL_ICON_{platform}"
