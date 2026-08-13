@@ -9,6 +9,7 @@ import type Project from "models/project"
 import type { ProjectPreview } from "models/project"
 import type ProjectTag from "models/project-tag"
 import type DDate from "utils/d-date"
+import { resolveCDNImagePath } from "utils/project-utils"
 
 export type FeedQuery = {
 	category?: string
@@ -77,7 +78,7 @@ export async function getProjectFeed(
 			authorUsername: item.creator.username,
 			category: item.category,
 			tags: item.tags ?? [],
-			coverImagePath: item.coverImagePath,
+			coverImagePath: resolveCDNImagePath(item.coverImagePath),
 		})),
 		queryCount: result.queryCount,
 	}
@@ -99,5 +100,9 @@ export async function getProjectByReference(
 		throw error(400, { message: result.error.message })
 	}
 
-	return result.data
+	return {
+		...result.data,
+		coverImagePath: resolveCDNImagePath(result.data.coverImagePath),
+		screenshotPaths: result.data.screenshotPaths?.map((p) => resolveCDNImagePath(p)!) ?? null,
+	}
 }
